@@ -370,7 +370,7 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
                       children: <Widget>[
                         // Name
                         Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: const <Widget>[
                               Text('Minh Nguyen',
                                   style: TextStyle(
@@ -379,7 +379,7 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
                                       fontFamily: 'Roboto',
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold)),
-                              Spacer(),
+                              SizedBox(width: 120),
                               Text('3h',
                                   style: TextStyle(
                                       decoration: TextDecoration.none,
