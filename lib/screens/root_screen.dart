@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recontre/screens/messageList_screen.dart';
+import 'package:recontre/screens/profile/profile_screen.dart';
 
 class RootScreen extends StatefulWidget {
   RootScreen({Key? key}) : super(key: key);
@@ -14,19 +15,49 @@ class _RootScreenState extends State<RootScreen> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => MessagelistWidget()),
-      );
     });
   }
 
-  void _getBody(int index) {}
+  Widget _getBody(int index) {
+    return IndexedStack(
+      index: index,
+      children: [
+        ProfileScreen(),
+        ProfileScreen(),
+        ProfileScreen(),
+        MessagelistWidget()
+      ],
+    );
+  }
+
+  PreferredSizeWidget _getAppBar(int index) {
+    if (index == 0) {
+      return AppBar(
+        title: Text("Profile"),
+      );
+    } else if (index == 1) {
+      return AppBar(
+        title: Text("Notifications"),
+      );
+    } else if (index == 2) {
+      return AppBar(
+        title: Text("Swipe"),
+      );
+    } else if (index == 3) {
+      return AppBar(
+        title: Text("Message"),
+      );
+    }
+    return AppBar(
+      title: Text("Hello"),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text("Hello"),
+      appBar: _getAppBar(_selectedIndex),
+      body: _getBody(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
