@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recontre/screens/messageList_screen.dart';
 
 class RootScreen extends StatefulWidget {
   RootScreen({Key? key}) : super(key: key);
@@ -13,6 +14,10 @@ class _RootScreenState extends State<RootScreen> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => MessagelistWidget()),
+      );
     });
   }
 
