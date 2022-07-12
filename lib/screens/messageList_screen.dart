@@ -21,6 +21,7 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
           color: Color.fromRGBO(253, 246, 235, 1),
         ),
         child: Stack(children: <Widget>[
+          // "Message" text
           const Positioned(
               top: 64,
               left: 24,
@@ -35,44 +36,65 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
                   ))),
 
           // Search box
-          // Positioned(
-          //     top: 114,
-          //     left: 24,
-          //     child: Container(
-          //       decoration: BoxDecoration(
-          //         borderRadius: BorderRadius.only(
-          //           topLeft: Radius.circular(8),
-          //           topRight: Radius.circular(8),
-          //           bottomLeft: Radius.circular(8),
-          //           bottomRight: Radius.circular(8),
-          //         ),
-          //         color: Color.fromRGBO(255, 255, 255, 1),
-          //         border: Border.all(
-          //           color: Color.fromRGBO(194, 188, 188, 1),
-          //           width: 1,
-          //         ),
-          //       ),
-          //       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          //       child: Row(
-          //         mainAxisSize: MainAxisSize.min,
-          //         children: <Widget>[
-          //           null,
-          //           SizedBox(width: 8),
-          //           Text(
-          //             'Search conversation...',
-          //             textAlign: TextAlign.left,
-          //             style: TextStyle(
-          //                 color: Color.fromRGBO(194, 188, 188, 1),
-          //                 fontFamily: 'Roboto',
-          //                 fontSize: 14,
-          //                 letterSpacing:
-          //                     0 /*percentages not used in flutter. defaulting to zero*/,
-          //                 fontWeight: FontWeight.normal,
-          //                 height: 1),
-          //           ),
-          //         ],
-          //       ),
-          //     )),
+          Positioned(
+              top: 114,
+              left: 24,
+              child: Container(
+                height: 40,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(8),
+                    topRight: Radius.circular(8),
+                    bottomLeft: Radius.circular(8),
+                    bottomRight: Radius.circular(8),
+                  ),
+                  color: Color.fromRGBO(255, 255, 255, 1),
+                  border: Border.all(
+                    color: Color.fromRGBO(194, 188, 188, 1),
+                    width: 1,
+                  ),
+                ),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Image.asset(
+                      "assets/icon/Status=Inactive, Type=Search.png",
+                      height: 24,
+                      filterQuality: FilterQuality.medium,
+                    ),
+                    //spacing
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    //textfield need a sizedbox to limit its width
+                    const SizedBox(
+                        width: 342,
+                        child: Material(
+                          color: Color.fromRGBO(0, 0, 0, 0),
+                          child: TextField(
+                              cursorColor: Colors.black,
+                              textAlignVertical: TextAlignVertical.center,
+                              style: TextStyle(
+                                color: Color.fromRGBO(194, 188, 188, 1),
+                                fontFamily: 'Roboto',
+                                fontSize: 14,
+                                fontWeight: FontWeight.normal,
+                              ),
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Search conversation...",
+                                  hintStyle: TextStyle(
+                                    color: Color.fromRGBO(194, 188, 188, 1),
+                                    fontFamily: 'Roboto',
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ))),
+                        )),
+                  ],
+                ),
+              )),
 
           // 'My matches' text
           const Positioned(
