@@ -25,7 +25,7 @@ class ProfileScreen extends StatelessWidget {
                             return Builder(
                               builder: (BuildContext context) {
                                 return Image.asset(
-                                  "assets/avatar/Female/Female1.jpg",
+                                  "assets/avatar/Female1.jpg",
                                   width:
                                       MediaQuery.of(context).size.width * 0.8,
                                   fit: BoxFit.fitWidth,
