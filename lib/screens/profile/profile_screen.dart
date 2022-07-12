@@ -52,7 +52,10 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 15),
-                        child: Text("Ho Chi Minh City, Vietnam"),
+                        child: Text(
+                          "Ho Chi Minh City, Vietnam",
+                          style: TextStyle(color: Colors.grey),
+                        ),
                       )
                     ],
                   ),
