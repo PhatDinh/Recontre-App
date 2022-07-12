@@ -33,20 +33,23 @@ class _LoginScreenState extends State<LoginScreen> {
                   alignment: Alignment.center,
                   padding: const EdgeInsets.all(10),
                   child: const Text(
-                    'Login',
-                    style: TextStyle(fontSize: 20),
+                    'Find a new relationship with ease',
+                    style: TextStyle(fontSize: 16),
                   )),
               Container(
+                margin: const EdgeInsets.fromLTRB(0, 24, 0, 0),
                 padding: const EdgeInsets.all(10),
                 child: TextField(
                   controller: nameController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Username',
+                    labelText: 'Email',
+                    prefixIcon: Icon(Icons.email)
                   ),
                 ),
               ),
               Container(
+                margin: const EdgeInsets.fromLTRB(0, 24, 0, 0),
                 padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: TextField(
                   obscureText: true,
@@ -54,12 +57,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Password',
+                      prefixIcon: Icon(Icons.lock),
+                      suffixIcon: Icon(Icons.remove_red_eye)
                   ),
                 ),
               ),
               Container(
                   height: 50,
-                  margin: const EdgeInsets.fromLTRB(0, 16, 0, 4),
+                  margin: const EdgeInsets.fromLTRB(0, 64, 0, 4),
                   padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                   child: ElevatedButton(
                     child: const Text('Login'),
@@ -88,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Row(
                 children: <Widget>[
-                  const Text('Does not have account?'),
+                  const Text('Don\'t have an account?'),
                   TextButton(
                     child: const Text(
                       'Sign up',
