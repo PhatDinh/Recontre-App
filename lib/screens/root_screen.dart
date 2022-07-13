@@ -35,6 +35,7 @@ class _RootScreenState extends State<RootScreen> {
   PreferredSizeWidget _getAppBar(int index) {
     if (index == 0) {
       return AppBar(
+        centerTitle: true,
         title: Text("Profile"),
       );
     } else if (index == 1) {
