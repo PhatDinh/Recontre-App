@@ -16,34 +16,56 @@ class ChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Align(
       alignment: isSender ? Alignment.centerRight : Alignment.centerLeft,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(8),
-          topRight: Radius.circular(8),
-          bottomLeft: Radius.circular(8),
-          bottomRight: Radius.circular(8),
+      child: Container(
+        constraints: BoxConstraints(maxWidth: 200),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: [
+            BoxShadow(
+                color: Color.fromRGBO(33, 28, 28, 0.07999999821186066),
+                offset: Offset(0, 4),
+                blurRadius: 8)
+          ],
+          gradient: LinearGradient(
+              begin: Alignment(0.5, 0.5),
+              end: Alignment(-0.5, 0.5),
+              colors: isSender
+                  ? [
+                      Color.fromRGBO(255, 255, 255, 1),
+                      Color.fromRGBO(255, 255, 255, 1)
+                    ]
+                  : [
+                      Color.fromRGBO(251, 135, 1, 1),
+                      Color.fromRGBO(239, 180, 28, 1),
+                    ]),
         ),
-        boxShadow: [
-          BoxShadow(
-              color: Color.fromRGBO(33, 28, 28, 0.07999999821186066),
-              offset: Offset(0, 4),
-              blurRadius: 8)
-        ],
-        color: Color.fromRGBO(255, 255, 255, 1),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      child: Text(
-        textContent!,
-        textAlign: TextAlign.right,
-        style: const TextStyle(
-            color: Color.fromRGBO(32, 29, 29, 1),
-            fontFamily: 'Roboto',
-            fontSize: 16,
-            letterSpacing: 0,
-            fontWeight: FontWeight.normal,
-            height: 1),
+        padding: isText
+            ? EdgeInsets.symmetric(horizontal: 12, vertical: 6)
+            : EdgeInsets.zero,
+        child: isText
+            ? Text(
+                textContent!,
+                textAlign: isSender ? TextAlign.right : TextAlign.left,
+                style: TextStyle(
+                    color: isSender
+                        ? Color.fromRGBO(32, 29, 29, 1)
+                        : Color.fromRGBO(255, 255, 255, 1),
+                    fontFamily: 'Roboto',
+                    fontSize: 16,
+                    letterSpacing: 0,
+                    fontWeight: FontWeight.normal,
+                    height: 1),
+              )
+            : ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.asset(
+                  imagePath!,
+                  fit: BoxFit.contain,
+                  alignment:
+                      isSender ? Alignment.centerRight : Alignment.centerLeft,
+                )),
       ),
     );
   }
@@ -91,8 +113,21 @@ class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
                       SizedBox(height: 18),
                       ChatBubble(
                         isText: true,
-                        isSender: true,
+                        isSender: false,
                         textContent: 'Nice to meet you',
+                      ),
+                      SizedBox(height: 18),
+                      ChatBubble(
+                        isText: true,
+                        isSender: false,
+                        textContent:
+                            "Sorry I'm at work, would you like to come over some time",
+                      ),
+                      SizedBox(height: 18),
+                      ChatBubble(
+                        isText: false,
+                        isSender: false,
+                        imagePath: "assets/avatar/Male1.jpg",
                       ),
                     ])),
           ),
