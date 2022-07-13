@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recontre/screens/messageDetails_screen.dart';
 import 'package:recontre/screens/messageList_screen.dart';
 import 'package:recontre/screens/profile/profile_screen.dart';
 
@@ -25,7 +26,8 @@ class _RootScreenState extends State<RootScreen> {
         ProfileScreen(),
         ProfileScreen(),
         ProfileScreen(),
-        MessagelistWidget()
+        MessagelistWidget(),
+        MessagedetailsWidget()
       ],
     );
   }

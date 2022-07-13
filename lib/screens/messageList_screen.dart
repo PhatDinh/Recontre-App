@@ -1,5 +1,20 @@
 import 'package:flutter/material.dart';
 
+class PeopleAvatar extends StatelessWidget {
+  final String imagePath;
+
+  const PeopleAvatar({Key? key, required this.imagePath}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      radius: 32,
+      backgroundImage: AssetImage(imagePath),
+      backgroundColor: Colors.transparent,
+    );
+  }
+}
+
 class MatchPeople extends StatelessWidget {
   final String imagePath;
   final String name;
@@ -10,11 +25,7 @@ class MatchPeople extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-      CircleAvatar(
-        radius: 32,
-        backgroundImage: AssetImage(imagePath),
-        backgroundColor: Colors.transparent,
-      ),
+      PeopleAvatar(imagePath: imagePath),
       const SizedBox(height: 10),
       SizedBox(
         width: 64,
@@ -66,11 +77,7 @@ class Conversation extends StatelessWidget {
       ),
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       child: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
-        CircleAvatar(
-          radius: 32,
-          backgroundImage: AssetImage(imagePath),
-          backgroundColor: Colors.transparent,
-        ),
+        PeopleAvatar(imagePath: imagePath),
         const SizedBox(height: 20, width: 10),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -345,7 +352,7 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
             top: 393,
             left: 24,
             child: Container(
-              width: 342,
+              width: 345,
               height: 319,
               decoration: const BoxDecoration(
                 color: Colors.transparent,
