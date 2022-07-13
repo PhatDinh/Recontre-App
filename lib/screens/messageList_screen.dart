@@ -1,5 +1,120 @@
 import 'package:flutter/material.dart';
 
+class MatchPeople extends StatelessWidget {
+  final String imagePath;
+  final String name;
+
+  const MatchPeople({Key? key, required this.imagePath, required this.name})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+      CircleAvatar(
+        radius: 32,
+        backgroundImage: AssetImage(imagePath),
+        backgroundColor: Colors.transparent,
+      ),
+      const SizedBox(height: 10),
+      SizedBox(
+        width: 64,
+        child: Text(name,
+            style: const TextStyle(
+                decoration: TextDecoration.none,
+                fontSize: 14,
+                fontFamily: 'Roboto',
+                color: Colors.black,
+                fontWeight: FontWeight.normal),
+            textAlign: TextAlign.center),
+      ),
+    ]);
+  }
+}
+
+class Conversation extends StatelessWidget {
+  final String imagePath;
+  final String name;
+  final String latestMesssage;
+  final String time;
+
+  const Conversation(
+      {Key? key,
+      required this.imagePath,
+      required this.name,
+      required this.latestMesssage,
+      required this.time})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // Person 1
+    return Container(
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(8),
+          topRight: Radius.circular(8),
+          bottomLeft: Radius.circular(8),
+          bottomRight: Radius.circular(8),
+        ),
+        boxShadow: [
+          BoxShadow(
+              color: Color.fromRGBO(48, 41, 41, 0.08),
+              offset: Offset(0, 4),
+              blurRadius: 8)
+        ],
+        color: Color.fromRGBO(255, 255, 255, 1),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+      child: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
+        CircleAvatar(
+          radius: 32,
+          backgroundImage: AssetImage(imagePath),
+          backgroundColor: Colors.transparent,
+        ),
+        const SizedBox(height: 20, width: 10),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            // Name
+            SizedBox(
+              width: 240,
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(name,
+                        style: const TextStyle(
+                            decoration: TextDecoration.none,
+                            fontSize: 16,
+                            fontFamily: 'Roboto',
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold)),
+                    Text(time,
+                        style: const TextStyle(
+                            decoration: TextDecoration.none,
+                            fontSize: 14,
+                            fontFamily: 'Roboto',
+                            color: Color.fromRGBO(128, 116, 116, 1),
+                            fontWeight: FontWeight.normal)),
+                  ]),
+            ),
+
+            const SizedBox(height: 5),
+            // Latest message
+            Text(latestMesssage,
+                style: const TextStyle(
+                    decoration: TextDecoration.none,
+                    fontSize: 14,
+                    fontFamily: 'Roboto',
+                    color: Color.fromRGBO(128, 116, 116, 1),
+                    fontWeight: FontWeight.normal)),
+          ],
+        ),
+      ]),
+    );
+  }
+}
+
 class MessagelistWidget extends StatefulWidget {
   @override
   _MessagelistWidgetState createState() => _MessagelistWidgetState();
@@ -34,8 +149,8 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
               top: 114,
               left: 24,
               child: Container(
-                width: 345,
                 height: 40,
+                width: 345,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(8),
@@ -52,11 +167,12 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Image.asset(
                       "assets/icon/Status=Inactive, Type=Search.png",
                       height: 24,
+                      alignment: Alignment.center,
                       filterQuality: FilterQuality.medium,
                     ),
                     //spacing
@@ -65,28 +181,31 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
                     ),
                     //textfield need a sizedbox to limit its width
                     const SizedBox(
-                        width: 279,
-                        child: Material(
-                          color: Color.fromRGBO(0, 0, 0, 0),
-                          child: TextField(
-                              cursorColor: Colors.black,
-                              textAlignVertical: TextAlignVertical.center,
-                              style: TextStyle(
-                                color: Color.fromRGBO(194, 188, 188, 1),
-                                fontFamily: 'Roboto',
-                                fontSize: 14,
-                                fontWeight: FontWeight.normal,
-                              ),
-                              decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "Search conversation...",
-                                  hintStyle: TextStyle(
-                                    color: Color.fromRGBO(194, 188, 188, 1),
-                                    fontFamily: 'Roboto',
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                  ))),
-                        )),
+                      width: 279,
+                      child: Material(
+                        color: Color.fromRGBO(0, 0, 0, 0),
+                        child: TextField(
+                            cursorColor: Colors.black,
+                            textAlignVertical: TextAlignVertical.center,
+                            style: TextStyle(
+                              color: Color.fromRGBO(194, 188, 188, 1),
+                              fontFamily: 'Roboto',
+                              fontSize: 14,
+                              fontWeight: FontWeight.normal,
+                            ),
+                            decoration: InputDecoration(
+                                contentPadding: EdgeInsets.symmetric(
+                                    horizontal: 0, vertical: 11),
+                                border: InputBorder.none,
+                                hintText: "Search conversation...",
+                                hintStyle: TextStyle(
+                                  color: Color.fromRGBO(194, 188, 188, 1),
+                                  fontFamily: 'Roboto',
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                ))),
+                      ),
+                    ),
                   ],
                 ),
               )),
@@ -169,140 +288,36 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
                 padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
                 child: ListView(
                   scrollDirection: Axis.horizontal,
-                  children: <Widget>[
+                  children: const <Widget>[
                     // Person 1
-                    Column(mainAxisSize: MainAxisSize.min, children: [
-                      const CircleAvatar(
-                        radius: 32,
-                        backgroundImage: AssetImage("assets/avatar/Male1.jpg"),
-                        backgroundColor: Colors.transparent,
-                      ),
-                      const SizedBox(height: 10),
-                      Container(
-                        width: 64,
-                        child: const Text('Minh Nguyen',
-                            style: TextStyle(
-                                decoration: TextDecoration.none,
-                                fontSize: 14,
-                                fontFamily: 'Roboto',
-                                color: Colors.black,
-                                fontWeight: FontWeight.normal),
-                            textAlign: TextAlign.center),
-                      ),
-                    ]),
-                    const SizedBox(width: 16),
-
+                    MatchPeople(
+                        imagePath: "assets/avatar/Male1.jpg",
+                        name: 'Minh Nguyen'),
+                    SizedBox(width: 16),
                     // Person 2
-                    Column(mainAxisSize: MainAxisSize.min, children: [
-                      const CircleAvatar(
-                        radius: 32,
-                        backgroundImage:
-                            AssetImage("assets/avatar/Female1.jpg"),
-                        backgroundColor: Colors.transparent,
-                      ),
-                      const SizedBox(height: 10),
-                      Container(
-                        width: 64,
-                        child: const Text('Nguyet Phan',
-                            style: TextStyle(
-                                decoration: TextDecoration.none,
-                                fontSize: 14,
-                                fontFamily: 'Roboto',
-                                color: Colors.black,
-                                fontWeight: FontWeight.normal),
-                            textAlign: TextAlign.center),
-                      ),
-                    ]),
-                    const SizedBox(width: 16),
-
+                    MatchPeople(
+                        imagePath: "assets/avatar/Female1.jpg",
+                        name: 'Nguyet Phan'),
+                    SizedBox(width: 16),
                     // Person 3
-                    Column(mainAxisSize: MainAxisSize.min, children: [
-                      const CircleAvatar(
-                        radius: 32,
-                        backgroundImage: AssetImage("assets/avatar/Male2.jpg"),
-                        backgroundColor: Colors.transparent,
-                      ),
-                      const SizedBox(height: 10),
-                      Container(
-                        width: 64,
-                        child: const Text('Minh Luan',
-                            style: TextStyle(
-                                decoration: TextDecoration.none,
-                                fontSize: 14,
-                                fontFamily: 'Roboto',
-                                color: Colors.black,
-                                fontWeight: FontWeight.normal),
-                            textAlign: TextAlign.center),
-                      ),
-                    ]),
-                    const SizedBox(width: 16),
-
+                    MatchPeople(
+                        imagePath: "assets/avatar/Male2.jpg",
+                        name: 'Minh Luan'),
+                    SizedBox(width: 16),
                     // Person 4
-                    Column(mainAxisSize: MainAxisSize.min, children: [
-                      const CircleAvatar(
-                        radius: 32,
-                        backgroundImage:
-                            AssetImage("assets/avatar/Female2.jpg"),
-                        backgroundColor: Colors.transparent,
-                      ),
-                      const SizedBox(height: 10),
-                      Container(
-                        width: 64,
-                        child: const Text('Thanh Tran',
-                            style: TextStyle(
-                                decoration: TextDecoration.none,
-                                fontSize: 14,
-                                fontFamily: 'Roboto',
-                                color: Colors.black,
-                                fontWeight: FontWeight.normal),
-                            textAlign: TextAlign.center),
-                      ),
-                    ]),
-                    const SizedBox(width: 16),
-
+                    MatchPeople(
+                        imagePath: "assets/avatar/Female2.jpg",
+                        name: 'Thanh Tran'),
+                    SizedBox(width: 16),
                     // Person 5
-                    Column(mainAxisSize: MainAxisSize.min, children: [
-                      const CircleAvatar(
-                        radius: 32,
-                        backgroundImage: AssetImage("assets/avatar/Male3.jpg"),
-                        backgroundColor: Colors.transparent,
-                      ),
-                      const SizedBox(height: 10),
-                      Container(
-                        width: 64,
-                        child: const Text('Tuan Nguyen',
-                            style: TextStyle(
-                                decoration: TextDecoration.none,
-                                fontSize: 14,
-                                fontFamily: 'Roboto',
-                                color: Colors.black,
-                                fontWeight: FontWeight.normal),
-                            textAlign: TextAlign.center),
-                      ),
-                    ]),
-                    const SizedBox(width: 16),
-
+                    MatchPeople(
+                        imagePath: "assets/avatar/Male3.jpg",
+                        name: 'Tuan Nguyen'),
+                    SizedBox(width: 16),
                     // Person 6
-                    Column(mainAxisSize: MainAxisSize.min, children: [
-                      const CircleAvatar(
-                        radius: 32,
-                        backgroundImage:
-                            AssetImage("assets/avatar/Female3.jpg"),
-                        backgroundColor: Colors.transparent,
-                      ),
-                      const SizedBox(height: 10),
-                      Container(
-                        width: 64,
-                        child: const Text('Hoai Thuong',
-                            style: TextStyle(
-                                decoration: TextDecoration.none,
-                                fontSize: 14,
-                                fontFamily: 'Roboto',
-                                color: Colors.black,
-                                fontWeight: FontWeight.normal),
-                            textAlign: TextAlign.center),
-                      ),
-                    ]),
+                    MatchPeople(
+                        imagePath: "assets/avatar/Female3.jpg",
+                        name: 'Hoai Thuong'),
                   ],
                 ),
               )),
@@ -331,78 +346,57 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
             left: 24,
             child: Container(
               width: 342,
-              height: 369,
+              height: 319,
               decoration: const BoxDecoration(
                 color: Colors.transparent,
               ),
               padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-              child:
-                  ListView(scrollDirection: Axis.vertical, children: <Widget>[
-                // Person 1
-                Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(8),
-                      topRight: Radius.circular(8),
-                      bottomLeft: Radius.circular(8),
-                      bottomRight: Radius.circular(8),
+              child: ListView(
+                  scrollDirection: Axis.vertical,
+                  children: const <Widget>[
+                    Conversation(
+                      imagePath: "assets/avatar/Male1.jpg",
+                      name: 'Minh Nguyen',
+                      latestMesssage: 'You: Okay, maybe next time.',
+                      time: '30m',
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Color.fromRGBO(48, 41, 41, 0.08),
-                          offset: Offset(0, 4),
-                          blurRadius: 8)
-                    ],
-                    color: Color.fromRGBO(255, 255, 255, 1),
-                  ),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-                  child: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
-                    const CircleAvatar(
-                      radius: 32,
-                      backgroundImage: AssetImage("assets/avatar/Male1.jpg"),
-                      backgroundColor: Colors.transparent,
+                    SizedBox(
+                      height: 5,
                     ),
-                    const SizedBox(height: 20, width: 10),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        // Name
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const <Widget>[
-                              Text('Minh Nguyen',
-                                  style: TextStyle(
-                                      decoration: TextDecoration.none,
-                                      fontSize: 16,
-                                      fontFamily: 'Roboto',
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold)),
-                              SizedBox(width: 120),
-                              Text('3h',
-                                  style: TextStyle(
-                                      decoration: TextDecoration.none,
-                                      fontSize: 14,
-                                      fontFamily: 'Roboto',
-                                      color: Color.fromRGBO(128, 116, 116, 1),
-                                      fontWeight: FontWeight.normal)),
-                            ]),
-
-                        const SizedBox(height: 5),
-                        // Latest message
-                        const Text('You: Okay, maybe next time.',
-                            style: TextStyle(
-                                decoration: TextDecoration.none,
-                                fontSize: 14,
-                                fontFamily: 'Roboto',
-                                color: Color.fromRGBO(128, 116, 116, 1),
-                                fontWeight: FontWeight.normal)),
-                      ],
+                    Conversation(
+                      imagePath: "assets/avatar/Male2.jpg",
+                      name: 'Minh Luan',
+                      latestMesssage: 'Nice to meet you',
+                      time: '10h',
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Conversation(
+                      imagePath: "assets/avatar/Female1.jpg",
+                      name: 'Nguyet Phan',
+                      latestMesssage: 'Hello',
+                      time: '11h',
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Conversation(
+                      imagePath: "assets/avatar/Male3.jpg",
+                      name: 'Tuan Nguyen',
+                      latestMesssage: 'You: I had fun today',
+                      time: '21d',
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Conversation(
+                      imagePath: "assets/avatar/Female3.jpg",
+                      name: 'Hoai Thuong',
+                      latestMesssage: 'You: I miss you so much',
+                      time: '100d',
                     ),
                   ]),
-                ),
-              ]),
             ),
           )
         ]));
