@@ -11,6 +11,7 @@ class ProfileDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20, top: 10, bottom: 10),
@@ -131,31 +132,37 @@ class ProfileDetail extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               fontSize: 20)),
                     ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          BioTab(
-                            name: "Painting",
-                            icon: CupertinoIcons.paintbrush,
-                          ),
-                          BioTab(
-                              name: "Traveling",
-                              icon: CupertinoIcons.paperplane),
-                          BioTab(
-                            name: "Gaming",
-                            icon: CupertinoIcons.game_controller,
-                          ),
-                          BioTab(
-                            name: "Gaming",
-                            icon: CupertinoIcons.game_controller,
-                          )
-                        ],
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            BioTab(
+                              name: "Painting",
+                              check: false,
+                              icon: CupertinoIcons.paintbrush,
+                            ),
+                            BioTab(
+                                name: "Traveling",
+                                check: false,
+                                icon: CupertinoIcons.paperplane),
+                            BioTab(
+                              name: "Gaming",
+                              check: false,
+                              icon: CupertinoIcons.game_controller,
+                            ),
+                            BioTab(
+                              name: "Gaming",
+                              check: false,
+                              icon: CupertinoIcons.game_controller,
+                            )
+                          ],
+                        ),
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 15,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),

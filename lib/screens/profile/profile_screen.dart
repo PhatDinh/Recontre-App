@@ -144,8 +144,10 @@ class FloatingIcon extends StatelessWidget {
 class BioTab extends StatelessWidget {
   final String? name;
   final IconData? icon;
+  final bool? check;
   const BioTab({
     this.name,
+    this.check = true,
     this.icon,
     Key? key,
   }) : super(key: key);
@@ -153,7 +155,9 @@ class BioTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 15, bottom: 10),
+      padding: check == true
+          ? EdgeInsets.only(left: 15, bottom: 10)
+          : EdgeInsets.only(right: 10),
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
