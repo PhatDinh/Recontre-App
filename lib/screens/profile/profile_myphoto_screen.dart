@@ -10,7 +10,26 @@ class MyPhotoScreen extends StatelessWidget {
     const CardRadius = 10.0;
     return Scaffold(
         appBar: AppBar(
-          title: Text("My Photo"),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 20, top: 10, bottom: 10),
+              child: TextButton(
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.blue),
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5)))),
+                  onPressed: () {},
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    child: Text(
+                      "Save",
+                      style: TextStyle(fontSize: 18, color: Colors.white),
+                    ),
+                  )),
+            )
+          ],
+          title: Text("My Photos"),
           flexibleSpace: Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -28,13 +47,13 @@ class MyPhotoScreen extends StatelessWidget {
         body: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(
-                top: 10,
-              ),
+              padding: const EdgeInsets.only(top: 3),
               child: SizedBox(
                 width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.9,
+                height: MediaQuery.of(context).size.height * 0.93,
                 child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
                     elevation: 8,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
@@ -68,7 +87,8 @@ class MyPhotoScreen extends StatelessWidget {
                                 child: Center(
                                     child: Text(
                                   "You can add up to 9 images",
-                                  style: TextStyle(fontSize: 20),
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.grey),
                                 )))
                           ]),
                     )),
@@ -94,7 +114,7 @@ class ImagePicker extends StatelessWidget {
       height: 160,
       padding: EdgeInsets.only(left: 10, right: 10, bottom: 15),
       child: DottedBorder(
-          color: Colors.grey,
+          color: Colors.grey[350]!,
           strokeWidth: 3,
           radius: Radius.circular(CardRadius),
           dashPattern: [10, 5],
@@ -117,6 +137,7 @@ class ImagePicker extends StatelessWidget {
           child: Center(
               child: Icon(
             CupertinoIcons.plus,
+            color: Colors.grey[350],
             size: 24,
           ))),
     );

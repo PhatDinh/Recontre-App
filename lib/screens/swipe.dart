@@ -28,7 +28,7 @@
           Positioned(
         top: 756,
         left: 0,
-        child: null
+        child: Text('a')
       ),Positioned(
         top: 134,
         left: 24,

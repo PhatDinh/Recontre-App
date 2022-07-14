@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:recontre/screens/profile/profile_detail_screen.dart';
 import 'package:recontre/screens/profile/profile_myphoto_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -16,6 +17,8 @@ class ProfileScreen extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 0.9,
             height: MediaQuery.of(context).size.height * 0.7,
             child: Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
                 elevation: 8,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
@@ -84,31 +87,56 @@ class ProfileScreen extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Image.asset(
-                "assets/icon/Icon_Setting.png",
-                height: 75,
-                color: Color.fromRGBO(240, 180, 28, 100),
-              ),
-              Image.asset(
-                "assets/icon/Icon_Profile.png",
-                height: 75,
-                color: Color.fromRGBO(240, 180, 28, 100),
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (builder) => MyPhotoScreen()));
-                },
-                child: Image.asset(
-                  "assets/icon/Icon_Profile.png",
-                  height: 75,
-                  color: Color.fromRGBO(240, 180, 28, 100),
-                ),
-              ),
+              FloatingIcon(
+                  onPress: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (builder) => ProfileDetail()));
+                  },
+                  linkIcon: "assets/icon-orange/Icon_Setting.png"),
+              FloatingIcon(linkIcon: "assets/icon-orange/Icon_Profile.png"),
+              FloatingIcon(
+                  onPress: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (builder) => MyPhotoScreen()));
+                  },
+                  linkIcon: "assets/icon-orange/Icon_Question.png"),
             ],
           ),
         )
       ],
+    );
+  }
+}
+
+class FloatingIcon extends StatelessWidget {
+  final String? linkIcon;
+  final VoidCallback? onPress;
+  const FloatingIcon({
+    this.linkIcon,
+    this.onPress,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipOval(
+      child: Material(
+        child: InkWell(
+          splashColor: Colors.white,
+          onTap: onPress,
+          child: SizedBox(
+            height: 75,
+            child: Image.asset(
+              linkIcon!,
+              height: 20,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
