@@ -23,7 +23,7 @@ class ChatBubble extends StatelessWidget {
         constraints: BoxConstraints(maxWidth: 200),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
                 color: Color.fromRGBO(33, 28, 28, 0.07999999821186066),
                 offset: Offset(0, 4),
@@ -84,7 +84,7 @@ class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
     return Container(
         width: 390,
         height: 844,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(16),
             topRight: Radius.circular(16),
@@ -94,7 +94,7 @@ class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
           color: Color.fromRGBO(253, 246, 235, 1),
         ),
         child: Stack(children: <Widget>[
-          // All bubble chat
+          // All bubble chats
           Positioned(
             top: 125,
             left: 24,
@@ -137,12 +137,13 @@ class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
 
           //Positioned(top: 756, left: 0, child: null),
 
+          // Info of conversation
           Positioned(
               top: 0,
               left: 0,
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(0),
                     topRight: Radius.circular(0),
@@ -157,15 +158,17 @@ class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
                   ],
                   color: Color.fromRGBO(255, 255, 255, 1),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color.fromRGBO(255, 255, 255, 1),
                       ),
-                      padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 0, vertical: 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
@@ -177,11 +180,11 @@ class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
                                 },
                                 icon: Image.asset("assets/icon/Back-Icon.png")),
                           ),
-                          SizedBox(width: 10),
-                          PeopleAvatar(
+                          const SizedBox(width: 10),
+                          const PeopleAvatar(
                               imagePath: "assets/avatar/Male1.jpg", size: 24),
-                          SizedBox(width: 16),
-                          Text(
+                          const SizedBox(width: 16),
+                          const Text(
                             'Minh Trang',
                             textAlign: TextAlign.left,
                             style: TextStyle(
@@ -189,15 +192,15 @@ class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
                                 color: Color.fromRGBO(32, 29, 29, 1),
                                 fontFamily: 'Roboto',
                                 fontSize: 20,
-                                fontWeight: FontWeight.normal,
+                                fontWeight: FontWeight.bold,
                                 height: 1),
                           ),
-                          SizedBox(width: 10),
+                          const SizedBox(width: 25),
                           Image.asset(
                             "assets/icon-orange/Status=Active, Type=Report.png",
                             height: 48,
                           ),
-                          SizedBox(width: 10),
+                          const SizedBox(width: 10),
                           Image.asset(
                             "assets/icon-orange/Status=Active, Type=Block.png",
                             height: 48,
@@ -209,7 +212,76 @@ class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
                 ),
               )),
 
-          //Positioned(top: 0, left: 0, child: null),
+          // Chatbox
+          Positioned(
+            top: 787,
+            bottom: 0,
+            left: 0,
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(12),
+                  topRight: Radius.circular(12),
+                  bottomLeft: Radius.circular(0),
+                  bottomRight: Radius.circular(0),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                      color: Color.fromRGBO(48, 41, 41, 0.07999999821186066),
+                      offset: Offset(0, 4),
+                      blurRadius: 8)
+                ],
+                color: Color.fromRGBO(255, 255, 255, 1),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+              child: Material(
+                  color: Colors.transparent,
+                  child: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
+                    IconButton(
+                        onPressed: () {},
+                        iconSize: 40,
+                        icon: Image.asset(
+                          "assets/icon-orange/Status=Active, Type=Photo.png",
+                        )),
+                    IconButton(
+                        onPressed: () {},
+                        iconSize: 35,
+                        icon: Image.asset(
+                          "assets/icon-orange/Status=Active, Type=Emote.png",
+                        )),
+                    const SizedBox(
+                      width: 194,
+                      child: TextField(
+                          cursorColor: Color.fromRGBO(194, 188, 188, 1),
+                          textAlignVertical: TextAlignVertical.center,
+                          style: TextStyle(
+                            color: Color.fromRGBO(194, 188, 188, 1),
+                            fontFamily: 'Roboto',
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                          ),
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 0, vertical: 13),
+                              border: InputBorder.none,
+                              hintText: "Type something...",
+                              hintStyle: TextStyle(
+                                color: Color.fromRGBO(194, 188, 188, 1),
+                                fontFamily: 'Roboto',
+                                fontSize: 16,
+                                fontWeight: FontWeight.normal,
+                              ))),
+                    ),
+                    IconButton(
+                        onPressed: () {},
+                        iconSize: 60,
+                        icon: Image.asset(
+                          "assets/icon-orange/Status=Active, Type=Send.png",
+                        ))
+                  ])),
+            ),
+          ),
         ]));
   }
 }
