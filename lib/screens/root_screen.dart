@@ -27,7 +27,6 @@ class _RootScreenState extends State<RootScreen> {
         ProfileScreen(),
         ProfileScreen(),
         MessagelistWidget(),
-        MessagedetailsWidget()
       ],
     );
   }

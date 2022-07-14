@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:recontre/screens/messageDetails_screen.dart';
 
 class PeopleAvatar extends StatelessWidget {
   final String imagePath;
+  final double size;
 
-  const PeopleAvatar({Key? key, required this.imagePath}) : super(key: key);
+  const PeopleAvatar({Key? key, required this.imagePath, this.size = 32})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      radius: 32,
+      radius: size,
       backgroundImage: AssetImage(imagePath),
       backgroundColor: Colors.transparent,
     );
@@ -59,65 +62,73 @@ class Conversation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Person 1
-    return Container(
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(8),
-          topRight: Radius.circular(8),
-          bottomLeft: Radius.circular(8),
-          bottomRight: Radius.circular(8),
-        ),
-        boxShadow: [
-          BoxShadow(
-              color: Color.fromRGBO(48, 41, 41, 0.08),
-              offset: Offset(0, 4),
-              blurRadius: 8)
-        ],
-        color: Color.fromRGBO(255, 255, 255, 1),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-      child: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
-        PeopleAvatar(imagePath: imagePath),
-        const SizedBox(height: 20, width: 10),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            // Name
-            SizedBox(
-              width: 240,
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(name,
-                        style: const TextStyle(
-                            decoration: TextDecoration.none,
-                            fontSize: 16,
-                            fontFamily: 'Roboto',
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold)),
-                    Text(time,
-                        style: const TextStyle(
-                            decoration: TextDecoration.none,
-                            fontSize: 14,
-                            fontFamily: 'Roboto',
-                            color: Color.fromRGBO(128, 116, 116, 1),
-                            fontWeight: FontWeight.normal)),
-                  ]),
-            ),
-
-            const SizedBox(height: 5),
-            // Latest message
-            Text(latestMesssage,
-                style: const TextStyle(
-                    decoration: TextDecoration.none,
-                    fontSize: 14,
-                    fontFamily: 'Roboto',
-                    color: Color.fromRGBO(128, 116, 116, 1),
-                    fontWeight: FontWeight.normal)),
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => MessagedetailsWidget()),
+        );
+      },
+      child: Container(
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(8),
+            topRight: Radius.circular(8),
+            bottomLeft: Radius.circular(8),
+            bottomRight: Radius.circular(8),
+          ),
+          boxShadow: [
+            BoxShadow(
+                color: Color.fromRGBO(48, 41, 41, 0.08),
+                offset: Offset(0, 4),
+                blurRadius: 8)
           ],
+          color: Color.fromRGBO(255, 255, 255, 1),
         ),
-      ]),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+        child: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
+          PeopleAvatar(imagePath: imagePath),
+          const SizedBox(height: 20, width: 10),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              // Name
+              SizedBox(
+                width: 240,
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(name,
+                          style: const TextStyle(
+                              decoration: TextDecoration.none,
+                              fontSize: 16,
+                              fontFamily: 'Roboto',
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold)),
+                      Text(time,
+                          style: const TextStyle(
+                              decoration: TextDecoration.none,
+                              fontSize: 14,
+                              fontFamily: 'Roboto',
+                              color: Color.fromRGBO(128, 116, 116, 1),
+                              fontWeight: FontWeight.normal)),
+                    ]),
+              ),
+
+              const SizedBox(height: 5),
+              // Latest message
+              Text(latestMesssage,
+                  style: const TextStyle(
+                      decoration: TextDecoration.none,
+                      fontSize: 14,
+                      fontFamily: 'Roboto',
+                      color: Color.fromRGBO(128, 116, 116, 1),
+                      fontWeight: FontWeight.normal)),
+            ],
+          ),
+        ]),
+      ),
     );
   }
 }
@@ -137,23 +148,9 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
           color: Color.fromRGBO(253, 246, 235, 1),
         ),
         child: Stack(children: <Widget>[
-          // "Message" text
-          const Positioned(
-              top: 64,
-              left: 24,
-              child: Text('Message',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    decoration: TextDecoration.none,
-                    color: Color.fromRGBO(0, 0, 0, 1),
-                    fontFamily: 'Roboto',
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                  ))),
-
           // Search box
           Positioned(
-              top: 114,
+              top: 24,
               left: 24,
               child: Container(
                 height: 40,
@@ -219,7 +216,7 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
 
           // 'My matches' text
           const Positioned(
-              top: 180,
+              top: 90,
               left: 24,
               child: Text(
                 'My matches',
@@ -237,7 +234,7 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
 
           // Orange circle
           Positioned(
-              top: 177,
+              top: 87,
               left: 132,
               child: Container(
                   width: 24,
@@ -284,8 +281,8 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
 
           // Matched people's avatars
           Positioned(
-              top: 216,
-              left: 23,
+              top: 126,
+              left: 24,
               child: Container(
                 width: 345,
                 height: 134,
@@ -331,7 +328,7 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
 
           // 'Conversation' text
           const Positioned(
-              top: 367,
+              top: 277,
               left: 24,
               child: Text(
                 'Conversations',
@@ -349,11 +346,11 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
 
           // Chat list
           Positioned(
-            top: 393,
+            top: 303,
             left: 24,
             child: Container(
               width: 345,
-              height: 319,
+              height: 409,
               decoration: const BoxDecoration(
                 color: Colors.transparent,
               ),
@@ -402,6 +399,15 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
                       name: 'Hoai Thuong',
                       latestMesssage: 'You: I miss you so much',
                       time: '100d',
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Conversation(
+                      imagePath: "assets/avatar/Female2.jpg",
+                      name: 'Thanh Tran',
+                      latestMesssage: 'How are you?',
+                      time: '131d',
                     ),
                   ]),
             ),
