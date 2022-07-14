@@ -11,6 +11,18 @@ class MyPhotoScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text("My Photo"),
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+                colors: <Color>[
+                  Color.fromRGBO(239, 180, 28, 1),
+                  Color.fromRGBO(251, 135, 1, 1)
+                ],
+              ),
+            ),
+          ),
           centerTitle: false,
         ),
         body: Column(

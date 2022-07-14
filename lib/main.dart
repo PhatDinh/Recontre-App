@@ -10,14 +10,12 @@ void main() {
       debugShowCheckedModeBanner: false,
       home: LoginScreen(),
       theme: ThemeData(
-          appBarTheme: AppBarTheme(
-              foregroundColor: textColor,
-              centerTitle: true,
-              titleTextStyle: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 22,
-                  color: Colors.black)),
-          colorScheme: ColorScheme.light(
-            primary: primaryBG,
-          ))));
+        appBarTheme: AppBarTheme(
+            foregroundColor: textColor,
+            centerTitle: true,
+            titleTextStyle: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 22,
+                color: Colors.black)),
+      )));
 }
