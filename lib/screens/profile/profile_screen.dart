@@ -155,7 +155,9 @@ class BioTab extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 15, bottom: 10),
       child: Container(
-        decoration: BoxDecoration(border: Border.all(color: Colors.orange)),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Colors.orange)),
         child: Padding(
           padding: const EdgeInsets.all(8),
           child: Row(mainAxisSize: MainAxisSize.min, children: [

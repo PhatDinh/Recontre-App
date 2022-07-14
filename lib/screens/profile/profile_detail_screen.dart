@@ -62,6 +62,7 @@ class ProfileDetail extends StatelessWidget {
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.825,
+            width: double.infinity,
             child: Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15)),
@@ -99,24 +100,26 @@ class ProfileDetail extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               fontSize: 20)),
                     ),
-                    Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(
-                                color: Color.fromRGBO(251, 156, 45, 1))),
-                        padding: EdgeInsets.only(left: 10),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Text(
-                            "Vui vẻ chân thành. Thích nghe nhạc, xem phim, đọc sách",
-                            maxLines: 1,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromRGBO(251, 156, 45, 1),
-                                fontSize: 18),
-                            overflow: TextOverflow.fade,
-                          ),
-                        )),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(
+                                  color: Color.fromRGBO(251, 156, 45, 1))),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 8),
+                            child: Text(
+                              "Vui vẻ chân thành. Thích nghe nhạc, xem phim, đọc sách",
+                              maxLines: 1,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(251, 156, 45, 1),
+                                  fontSize: 17),
+                              overflow: TextOverflow.fade,
+                            ),
+                          )),
+                    ),
                     SizedBox(
                       height: 20,
                     ),
@@ -131,6 +134,7 @@ class ProfileDetail extends StatelessWidget {
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           BioTab(
                             name: "Painting",
