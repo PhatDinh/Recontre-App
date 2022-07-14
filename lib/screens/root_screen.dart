@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recontre/screens/messageDetails_screen.dart';
 import 'package:recontre/screens/messageList_screen.dart';
 import 'package:recontre/screens/profile/profile_screen.dart';
+import 'package:recontre/screens/swipe_screen.dart';
 
 class RootScreen extends StatefulWidget {
   RootScreen({Key? key}) : super(key: key);
@@ -25,7 +26,7 @@ class _RootScreenState extends State<RootScreen> {
       children: [
         ProfileScreen(),
         ProfileScreen(),
-        ProfileScreen(),
+        HomescreenWidget(),
         MessagelistWidget(),
       ],
     );
@@ -126,35 +127,60 @@ class _RootScreenState extends State<RootScreen> {
         appBar: _getAppBar(_selectedIndex),
         body: _getBody(_selectedIndex),
         bottomNavigationBar: BottomNavigationBar(
+            showSelectedLabels: true,
+            type: BottomNavigationBarType.fixed,
+            selectedFontSize: 15,
+            unselectedFontSize: 15,
+            selectedItemColor: Colors.grey,
             currentIndex: _selectedIndex,
             onTap: _onItemTapped,
             items: [
               BottomNavigationBarItem(
                   label: "Profile",
+                  activeIcon: Image.asset(
+                    "assets/icon-orange/Icon_Profile.png",
+                    height: 50,
+                  ),
                   icon: Image.asset(
                     "assets/icon/Icon_Profile.png",
                     height: 50,
                   )),
               BottomNavigationBarItem(
                   label: "Notification",
+                  activeIcon: Image.asset(
+                    "assets/icon-orange/Icon_Notifications.png",
+                    height: 50,
+                  ),
                   icon: Image.asset(
                     "assets/icon/Icon_Notifications.png",
                     height: 50,
                   )),
               BottomNavigationBarItem(
                   label: "Swipe",
+                  activeIcon: Image.asset(
+                    "assets/icon-orange/Icon_Swipe.png",
+                    height: 50,
+                  ),
                   icon: Image.asset(
                     "assets/icon/Icon_Swipe.png",
                     height: 50,
                   )),
               BottomNavigationBarItem(
                   label: "Chat",
+                  activeIcon: Image.asset(
+                    "assets/icon-orange/Icon_Chat.png",
+                    height: 50,
+                  ),
                   icon: Image.asset(
                     "assets/icon/Icon_Chat.png",
                     height: 50,
                   )),
               BottomNavigationBarItem(
                   label: "Menu",
+                  activeIcon: Image.asset(
+                    "assets/icon-orange/Icon_Menu.png",
+                    height: 50,
+                  ),
                   icon: Image.asset(
                     "assets/icon/Icon_Menu.png",
                     height: 50,
