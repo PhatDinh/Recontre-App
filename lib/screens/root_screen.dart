@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recontre/screens/messageDetails_screen.dart';
 import 'package:recontre/screens/messageList_screen.dart';
 import 'package:recontre/screens/profile/profile_screen.dart';
+import 'package:recontre/screens/swipe_screen.dart';
 
 class RootScreen extends StatefulWidget {
   RootScreen({Key? key}) : super(key: key);
@@ -25,7 +26,7 @@ class _RootScreenState extends State<RootScreen> {
       children: [
         ProfileScreen(),
         ProfileScreen(),
-        ProfileScreen(),
+        HomescreenWidget(),
         MessagelistWidget(),
       ],
     );
