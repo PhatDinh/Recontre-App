@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     )),
                 Container(
-                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 8),
+                  margin: const EdgeInsets.fromLTRB(0, 0, 4, 8),
                   alignment: Alignment.centerRight,
                   child: TextButton(
                     onPressed: () {},
