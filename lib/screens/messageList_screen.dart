@@ -27,21 +27,28 @@ class MatchPeople extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-      PeopleAvatar(imagePath: imagePath),
-      const SizedBox(height: 10),
-      SizedBox(
-        width: 64,
-        child: Text(name,
-            style: const TextStyle(
-                decoration: TextDecoration.none,
-                fontSize: 14,
-                fontFamily: 'Roboto',
-                color: Colors.black,
-                fontWeight: FontWeight.normal),
-            textAlign: TextAlign.center),
-      ),
-    ]);
+    return InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MessagedetailsWidget()),
+          );
+        },
+        child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+          PeopleAvatar(imagePath: imagePath),
+          const SizedBox(height: 10),
+          SizedBox(
+            width: 64,
+            child: Text(name,
+                style: const TextStyle(
+                    decoration: TextDecoration.none,
+                    fontSize: 14,
+                    fontFamily: 'Roboto',
+                    color: Colors.black,
+                    fontWeight: FontWeight.normal),
+                textAlign: TextAlign.center),
+          ),
+        ]));
   }
 }
 
