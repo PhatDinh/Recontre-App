@@ -35,26 +35,86 @@ class _RootScreenState extends State<RootScreen> {
   PreferredSizeWidget _getAppBar(int index) {
     if (index == 0) {
       return AppBar(
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: <Color>[
+                Color.fromRGBO(239, 180, 28, 1),
+                Color.fromRGBO(251, 135, 1, 1)
+              ],
+            ),
+          ),
+        ),
         automaticallyImplyLeading: false,
         title: Text("Profile"),
       );
     } else if (index == 1) {
       return AppBar(
         automaticallyImplyLeading: false,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: <Color>[
+                Color.fromRGBO(239, 180, 28, 1),
+                Color.fromRGBO(251, 135, 1, 1)
+              ],
+            ),
+          ),
+        ),
         title: Text("Notifications"),
       );
     } else if (index == 2) {
       return AppBar(
         automaticallyImplyLeading: false,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: <Color>[
+                Color.fromRGBO(239, 180, 28, 1),
+                Color.fromRGBO(251, 135, 1, 1)
+              ],
+            ),
+          ),
+        ),
         title: Text("Swipe"),
       );
     } else if (index == 3) {
       return AppBar(
         automaticallyImplyLeading: false,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: <Color>[
+                Color.fromRGBO(239, 180, 28, 1),
+                Color.fromRGBO(251, 135, 1, 1)
+              ],
+            ),
+          ),
+        ),
         title: Text("Message"),
       );
     }
     return AppBar(
+      flexibleSpace: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+            colors: <Color>[
+              Color.fromRGBO(239, 180, 28, 1),
+              Color.fromRGBO(251, 135, 1, 1)
+            ],
+          ),
+        ),
+      ),
       title: Text("Hello"),
     );
   }
