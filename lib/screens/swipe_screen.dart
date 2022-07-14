@@ -24,8 +24,9 @@ class _HomescreenWidgetState extends State<HomescreenWidget> {
           color: Color.fromRGBO(253, 246, 235, 1),
         ),
         child: Stack(children: <Widget>[
+          //Card
           Positioned(
-              top: 25,
+              top: 30,
               left: 24,
               child: Container(
                 decoration: BoxDecoration(
@@ -49,7 +50,7 @@ class _HomescreenWidgetState extends State<HomescreenWidget> {
                   children: <Widget>[
                     Container(
                         width: 310,
-                        height: 310,
+                        height: 370,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(4),
@@ -58,12 +59,12 @@ class _HomescreenWidgetState extends State<HomescreenWidget> {
                             bottomRight: Radius.circular(4),
                           ),
                           image: DecorationImage(
-                              image: AssetImage('assets/images/Avatar.png'),
+                              image: AssetImage('assets/avatar/Female2.jpg'),
                               fit: BoxFit.fitWidth),
                         ),
                         child: Stack(children: <Widget>[
                           Positioned(
-                              top: 294,
+                              top: 350,
                               left: 135,
                               child: Container(
                                 decoration: BoxDecoration(),
@@ -109,22 +110,6 @@ class _HomescreenWidgetState extends State<HomescreenWidget> {
                                   ],
                                 ),
                               )),
-                          Positioned(
-                              top: 152,
-                              left: 293,
-                              child: Transform.rotate(
-                                angle: 1.4033419209422001e-14 * (math.pi / 180),
-                                child:
-                                    Image.asset('assets/icon/Icon_Arrow2.png'),
-                              )),
-                          Positioned(
-                              top: 152,
-                              left: 17,
-                              child: Transform.rotate(
-                                angle: 179.99999499104345 * (math.pi / 180),
-                                child:
-                                    Image.asset('assets/icon/Icon_Arrow2.png'),
-                              )),
                         ])),
                     SizedBox(height: 12),
                     Container(
@@ -144,6 +129,7 @@ class _HomescreenWidgetState extends State<HomescreenWidget> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 0, vertical: 0),
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisSize: MainAxisSize.min,
                                   children: <Widget>[
                                     Text(
@@ -155,7 +141,7 @@ class _HomescreenWidgetState extends State<HomescreenWidget> {
                                           fontSize: 20,
                                           letterSpacing:
                                               0 /*percentages not used in flutter. defaulting to zero*/,
-                                          fontWeight: FontWeight.normal,
+                                          fontWeight: FontWeight.bold,
                                           height: 1),
                                     ),
                                     SizedBox(height: 4),
@@ -422,9 +408,10 @@ class _HomescreenWidgetState extends State<HomescreenWidget> {
                   ],
                 ),
               )),
+          //button
           Positioned(
-              top: 550,
-              left: 30,
+              top: 600,
+              left: 41,
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.transparent,
@@ -433,14 +420,14 @@ class _HomescreenWidgetState extends State<HomescreenWidget> {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Image.asset("assets/icon/Icon_Rewind.png", height: 60),
+                    Image.asset("assets/icon/Icon_Rewind.png", height: 50),
                     SizedBox(width: 16),
                     Image.asset("assets/icon-orange/Icon_Unlike.png",
                         height: 80),
                     SizedBox(width: 16),
                     Image.asset("assets/icon-orange/Icon_Like.png", height: 80),
                     SizedBox(width: 16),
-                    Image.asset("assets/icon/Icon_Mark.png", height: 60)
+                    Image.asset("assets/icon/Icon_Mark.png", height: 50)
                   ],
                 ),
               )),
