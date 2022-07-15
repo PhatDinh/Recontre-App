@@ -17,7 +17,8 @@ class MyPhotoScreen extends StatelessWidget {
               padding: const EdgeInsets.only(right: 20, top: 10, bottom: 10),
               child: TextButton(
                   style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.blue),
+                      backgroundColor: MaterialStateProperty.all(
+                          Color.fromRGBO(251, 156, 45, 1)),
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5)))),
                   onPressed: () {},

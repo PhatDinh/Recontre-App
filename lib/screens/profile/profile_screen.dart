@@ -87,6 +87,7 @@ class ProfileScreen extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+              FloatingIcon(linkIcon: "assets/icon-orange/Icon_Setting.png"),
               FloatingIcon(
                   onPress: () {
                     Navigator.push(
@@ -94,16 +95,8 @@ class ProfileScreen extends StatelessWidget {
                         MaterialPageRoute(
                             builder: (builder) => ProfileDetail()));
                   },
-                  linkIcon: "assets/icon-orange/Icon_Setting.png"),
-              FloatingIcon(linkIcon: "assets/icon-orange/Icon_Profile.png"),
-              FloatingIcon(
-                  onPress: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (builder) => MyPhotoScreen()));
-                  },
-                  linkIcon: "assets/icon-orange/Icon_Question.png"),
+                  linkIcon: "assets/icon-orange/Icon_Profile.png"),
+              FloatingIcon(linkIcon: "assets/icon-orange/Icon_Question.png"),
             ],
           ),
         )
