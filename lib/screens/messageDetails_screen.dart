@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:recontre/screens/messageList_screen.dart';
 
+import 'package:flutter/scheduler.dart';
+
 class ChatBubble extends StatelessWidget {
   final bool isText; //true = text; false = image;
   final bool isSender; //true = sender; false = receiver;
@@ -79,6 +81,62 @@ class MessagedetailsWidget extends StatefulWidget {
 }
 
 class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
+  // Create a text controller and use it to retrieve the current value
+  // of the TextField.
+  String newText = "";
+  final myController = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
+  List<Widget> bubbleList = [
+    ChatBubble(
+      isText: true,
+      isSender: true,
+      textContent: 'Hi Trang',
+    ),
+    SizedBox(height: 18),
+    ChatBubble(
+      isText: true,
+      isSender: false,
+      textContent: 'Nice to meet you',
+    ),
+    SizedBox(height: 18),
+    ChatBubble(
+      isText: true,
+      isSender: false,
+      textContent: "Sorry I'm at work, would you like to come over some time",
+    ),
+    SizedBox(height: 18),
+    ChatBubble(
+      isText: false,
+      isSender: false,
+      imagePath: "assets/avatar/Male1.jpg",
+    ),
+  ];
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController.dispose();
+    super.dispose();
+  }
+
+  void sendMessage() {
+    newText = myController.text;
+    myController.clear();
+    setState(() {
+      bubbleList = List.from(bubbleList)
+        ..addAll([
+          SizedBox(
+            height: 18,
+          ),
+          ChatBubble(
+            isText: true,
+            isSender: true,
+            textContent: newText,
+          )
+        ]);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -96,43 +154,23 @@ class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
         child: Stack(children: <Widget>[
           // All bubble chats
           Positioned(
-            top: 125,
+            top: 75,
             left: 24,
             child: Container(
                 width: 345,
-                height: 500,
+                height: 712,
                 decoration: const BoxDecoration(
                   color: Colors.transparent,
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                child: ListView(
-                    scrollDirection: Axis.vertical,
-                    children: const <Widget>[
-                      ChatBubble(
-                        isText: true,
-                        isSender: true,
-                        textContent: 'Hi Trang',
-                      ),
-                      SizedBox(height: 18),
-                      ChatBubble(
-                        isText: true,
-                        isSender: false,
-                        textContent: 'Nice to meet you',
-                      ),
-                      SizedBox(height: 18),
-                      ChatBubble(
-                        isText: true,
-                        isSender: false,
-                        textContent:
-                            "Sorry I'm at work, would you like to come over some time",
-                      ),
-                      SizedBox(height: 18),
-                      ChatBubble(
-                        isText: false,
-                        isSender: false,
-                        imagePath: "assets/avatar/Male1.jpg",
-                      ),
-                    ])),
+                child: ScrollConfiguration(
+                  behavior: ScrollConfiguration.of(context)
+                      .copyWith(scrollbars: false),
+                  child: ListView(
+                      controller: _scrollController,
+                      scrollDirection: Axis.vertical,
+                      children: bubbleList),
+                )),
           ),
 
           //Positioned(top: 756, left: 0, child: null),
@@ -250,18 +288,19 @@ class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
                         icon: Image.asset(
                           "assets/icon-orange/Status=Active, Type=Emote.png",
                         )),
-                    const SizedBox(
+                    SizedBox(
                       width: 194,
                       child: TextField(
+                          controller: myController,
                           cursorColor: Color.fromRGBO(194, 188, 188, 1),
                           textAlignVertical: TextAlignVertical.center,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Color.fromRGBO(194, 188, 188, 1),
                             fontFamily: 'Roboto',
                             fontSize: 16,
                             fontWeight: FontWeight.normal,
                           ),
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               contentPadding: EdgeInsets.symmetric(
                                   horizontal: 0, vertical: 13),
                               border: InputBorder.none,
@@ -274,7 +313,13 @@ class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
                               ))),
                     ),
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          sendMessage();
+                          SchedulerBinding.instance.addPostFrameCallback((_) {
+                            _scrollController.jumpTo(
+                                _scrollController.position.maxScrollExtent);
+                          });
+                        },
                         iconSize: 60,
                         icon: Image.asset(
                           "assets/icon-orange/Status=Active, Type=Send.png",

@@ -297,39 +297,43 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
                   color: Colors.transparent,
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: const <Widget>[
-                    // Person 1
-                    MatchPeople(
-                        imagePath: "assets/avatar/Male1.jpg",
-                        name: 'Minh Nguyen'),
-                    SizedBox(width: 16),
-                    // Person 2
-                    MatchPeople(
-                        imagePath: "assets/avatar/Female1.jpg",
-                        name: 'Nguyet Phan'),
-                    SizedBox(width: 16),
-                    // Person 3
-                    MatchPeople(
-                        imagePath: "assets/avatar/Male2.jpg",
-                        name: 'Minh Luan'),
-                    SizedBox(width: 16),
-                    // Person 4
-                    MatchPeople(
-                        imagePath: "assets/avatar/Female2.jpg",
-                        name: 'Thanh Tran'),
-                    SizedBox(width: 16),
-                    // Person 5
-                    MatchPeople(
-                        imagePath: "assets/avatar/Male3.jpg",
-                        name: 'Tuan Nguyen'),
-                    SizedBox(width: 16),
-                    // Person 6
-                    MatchPeople(
-                        imagePath: "assets/avatar/Female3.jpg",
-                        name: 'Hoai Thuong'),
-                  ],
+                child: ScrollConfiguration(
+                  behavior: ScrollConfiguration.of(context)
+                      .copyWith(scrollbars: false),
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: const <Widget>[
+                      // Person 1
+                      MatchPeople(
+                          imagePath: "assets/avatar/Male1.jpg",
+                          name: 'Minh Nguyen'),
+                      SizedBox(width: 16),
+                      // Person 2
+                      MatchPeople(
+                          imagePath: "assets/avatar/Female1.jpg",
+                          name: 'Nguyet Phan'),
+                      SizedBox(width: 16),
+                      // Person 3
+                      MatchPeople(
+                          imagePath: "assets/avatar/Male2.jpg",
+                          name: 'Minh Luan'),
+                      SizedBox(width: 16),
+                      // Person 4
+                      MatchPeople(
+                          imagePath: "assets/avatar/Female2.jpg",
+                          name: 'Thanh Tran'),
+                      SizedBox(width: 16),
+                      // Person 5
+                      MatchPeople(
+                          imagePath: "assets/avatar/Male3.jpg",
+                          name: 'Tuan Nguyen'),
+                      SizedBox(width: 16),
+                      // Person 6
+                      MatchPeople(
+                          imagePath: "assets/avatar/Female3.jpg",
+                          name: 'Hoai Thuong'),
+                    ],
+                  ),
                 ),
               )),
 
@@ -362,61 +366,65 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
                 color: Colors.transparent,
               ),
               padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-              child: ListView(
-                  scrollDirection: Axis.vertical,
-                  children: const <Widget>[
-                    Conversation(
-                      imagePath: "assets/avatar/Male1.jpg",
-                      name: 'Minh Nguyen',
-                      latestMesssage: 'You: Okay, maybe next time.',
-                      time: '30m',
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Conversation(
-                      imagePath: "assets/avatar/Male2.jpg",
-                      name: 'Minh Luan',
-                      latestMesssage: 'Nice to meet you',
-                      time: '10h',
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Conversation(
-                      imagePath: "assets/avatar/Female1.jpg",
-                      name: 'Nguyet Phan',
-                      latestMesssage: 'Hello',
-                      time: '11h',
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Conversation(
-                      imagePath: "assets/avatar/Male3.jpg",
-                      name: 'Tuan Nguyen',
-                      latestMesssage: 'You: I had fun today',
-                      time: '21d',
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Conversation(
-                      imagePath: "assets/avatar/Female3.jpg",
-                      name: 'Hoai Thuong',
-                      latestMesssage: 'You: I miss you so much',
-                      time: '100d',
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Conversation(
-                      imagePath: "assets/avatar/Female2.jpg",
-                      name: 'Thanh Tran',
-                      latestMesssage: 'How are you?',
-                      time: '131d',
-                    ),
-                  ]),
+              child: ScrollConfiguration(
+                behavior:
+                    ScrollConfiguration.of(context).copyWith(scrollbars: false),
+                child: ListView(
+                    scrollDirection: Axis.vertical,
+                    children: const <Widget>[
+                      Conversation(
+                        imagePath: "assets/avatar/Male1.jpg",
+                        name: 'Minh Nguyen',
+                        latestMesssage: 'You: Okay, maybe next time.',
+                        time: '30m',
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Conversation(
+                        imagePath: "assets/avatar/Male2.jpg",
+                        name: 'Minh Luan',
+                        latestMesssage: 'Nice to meet you',
+                        time: '10h',
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Conversation(
+                        imagePath: "assets/avatar/Female1.jpg",
+                        name: 'Nguyet Phan',
+                        latestMesssage: 'Hello',
+                        time: '11h',
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Conversation(
+                        imagePath: "assets/avatar/Male3.jpg",
+                        name: 'Tuan Nguyen',
+                        latestMesssage: 'You: I had fun today',
+                        time: '21d',
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Conversation(
+                        imagePath: "assets/avatar/Female3.jpg",
+                        name: 'Hoai Thuong',
+                        latestMesssage: 'You: I miss you so much',
+                        time: '100d',
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Conversation(
+                        imagePath: "assets/avatar/Female2.jpg",
+                        name: 'Thanh Tran',
+                        latestMesssage: 'How are you?',
+                        time: '131d',
+                      ),
+                    ]),
+              ),
             ),
           )
         ]));
