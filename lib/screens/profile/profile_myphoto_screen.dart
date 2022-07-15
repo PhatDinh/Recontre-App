@@ -20,7 +20,7 @@ class MyPhotoScreen extends StatelessWidget {
                       backgroundColor: MaterialStateProperty.all(
                           Color.fromRGBO(251, 156, 45, 1)),
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5)))),
+                          borderRadius: BorderRadius.circular(8)))),
                   onPressed: () {},
                   child: Padding(
                     padding:
