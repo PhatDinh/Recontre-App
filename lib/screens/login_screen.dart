@@ -93,15 +93,48 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
+                Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.all(10),
+                    child: const Text(
+                      '- or login with-',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color:Colors.grey,
+                      ),
+                    )),
                 Row(
                   children: <Widget>[
-                    const Text('Don\'t have an account?'),
+                    IconButton(
+                      icon: Image.asset('assets/icon-socialMedia/ImgBtn-Facebook.png'),
+                      iconSize: 54,
+                      onPressed: () {},
+                    ),
+                    const SizedBox(width: 8),
+                    IconButton(
+                      icon: Image.asset('assets/icon-socialMedia/ImgBtn-Instagram.png'),
+                      iconSize: 54,
+                      onPressed: () {},
+                    ),
+                    const SizedBox(width: 8),
+                    IconButton(
+                      icon: Image.asset('assets/icon-socialMedia/ImgBtn-Twitter.png'),
+                      iconSize: 54,
+                      onPressed: () {},
+                    ),
+                  ],
+                  mainAxisAlignment: MainAxisAlignment.center,
+                ),
+                Row(
+                  children: <Widget>[
+                    const Text('Don\'t have an account?',
+                    style: TextStyle(color:Colors.grey)),
                     TextButton(
                       child: const Text(
                         'Sign up',
                         style: TextStyle(
                             color: Colors.orange,
-                            fontSize: 20,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold),
                       ),
                       onPressed: () {

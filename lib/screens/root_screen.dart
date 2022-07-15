@@ -125,7 +125,7 @@ class _RootScreenState extends State<RootScreen> {
     return WillPopScope(
       onWillPop: () => Future.value(false),
       child: Scaffold(
-        appBar: _getAppBar(_selectedIndex),
+        // appBar: _getAppBar(_selectedIndex),
         body: _getBody(_selectedIndex),
         bottomNavigationBar: BottomNavigationBar(
             showSelectedLabels: true,
