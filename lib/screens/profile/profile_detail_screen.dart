@@ -11,7 +11,7 @@ class ProfileDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20, top: 10, bottom: 10),

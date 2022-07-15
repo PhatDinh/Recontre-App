@@ -10,8 +10,7 @@ class MyPhotoScreen extends StatelessWidget {
     const CardRadius = 10.0;
     return Scaffold(
         appBar: AppBar(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 20, top: 10, bottom: 10),
