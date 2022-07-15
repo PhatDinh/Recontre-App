@@ -12,10 +12,24 @@ class ProfileScreen extends StatelessWidget {
     return Column(
       children: [
         Padding(
+          padding: const EdgeInsets.only(top: 25, left: 30),
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: Text(
+              "Profile",
+              style: TextStyle(
+                  fontSize: 34,
+                  fontFamily: "Roboto",
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        Padding(
           padding: const EdgeInsets.only(top: 10),
           child: SizedBox(
-            width: MediaQuery.of(context).size.width * 0.9,
-            height: MediaQuery.of(context).size.height * 0.7,
+            width: MediaQuery.of(context).size.width * 0.85,
+            height: MediaQuery.of(context).size.height * 0.675,
             child: Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15)),
@@ -69,6 +83,10 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         BioTab(
                             name: "Traveling", icon: CupertinoIcons.paperplane),
+                        BioTab(
+                          name: "Gaming",
+                          icon: CupertinoIcons.game_controller,
+                        ),
                         BioTab(
                           name: "Gaming",
                           icon: CupertinoIcons.game_controller,
