@@ -35,7 +35,7 @@ class _RootScreenState extends State<RootScreen> {
   PreferredSizeWidget _getAppBar(int index) {
     if (index == 0) {
       return AppBar(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
