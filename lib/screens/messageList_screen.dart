@@ -140,12 +140,87 @@ class Conversation extends StatelessWidget {
   }
 }
 
+List<Conversation> allConversation = [
+  Conversation(
+    imagePath: "assets/avatar/Male1.jpg",
+    name: 'Minh Nguyen',
+    latestMesssage: 'You: Okay, maybe next time.',
+    time: '30m',
+  ),
+  Conversation(
+    imagePath: "assets/avatar/Male2.jpg",
+    name: 'Minh Luan',
+    latestMesssage: 'Nice to meet you',
+    time: '10h',
+  ),
+  Conversation(
+    imagePath: "assets/avatar/Female1.jpg",
+    name: 'Nguyet Phan',
+    latestMesssage: 'Hello',
+    time: '11h',
+  ),
+  Conversation(
+    imagePath: "assets/avatar/Male3.jpg",
+    name: 'Tuan Nguyen',
+    latestMesssage: 'You: I had fun today',
+    time: '21d',
+  ),
+  Conversation(
+    imagePath: "assets/avatar/Female3.jpg",
+    name: 'Hoai Thuong',
+    latestMesssage: 'You: I miss you so much',
+    time: '100d',
+  ),
+  Conversation(
+    imagePath: "assets/avatar/Female2.jpg",
+    name: 'Thanh Tran',
+    latestMesssage: 'How are you?',
+    time: '131d',
+  ),
+];
+
 class MessagelistWidget extends StatefulWidget {
   @override
   _MessagelistWidgetState createState() => _MessagelistWidgetState();
 }
 
 class _MessagelistWidgetState extends State<MessagelistWidget> {
+  List<Conversation> conversations = allConversation;
+  List<MatchPeople> allMatchPeople = [
+    // Person 1
+    MatchPeople(imagePath: "assets/avatar/Male1.jpg", name: 'Minh Nguyen'),
+    // Person 2
+    MatchPeople(imagePath: "assets/avatar/Female1.jpg", name: 'Nguyet Phan'),
+    // Person 3
+    MatchPeople(imagePath: "assets/avatar/Male2.jpg", name: 'Minh Luan'),
+    // Person 4
+    MatchPeople(imagePath: "assets/avatar/Female2.jpg", name: 'Thanh Tran'),
+    // Person 5
+    MatchPeople(imagePath: "assets/avatar/Male3.jpg", name: 'Tuan Nguyen'),
+    // Person 6
+    MatchPeople(imagePath: "assets/avatar/Female3.jpg", name: 'Hoai Thuong'),
+  ];
+  final myController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController.dispose();
+    super.dispose();
+  }
+
+  void searchConversation(String query) {
+    final sugesstions = allConversation.where((conversation) {
+      final name = conversation.name.toLowerCase();
+      final input = query.toLowerCase();
+      return name.contains(input);
+    }).toList();
+
+    setState(() {
+      conversations = sugesstions;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -204,11 +279,13 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
                       width: 10,
                     ),
                     //textfield need a sizedbox to limit its width
-                    const SizedBox(
+                    SizedBox(
                       width: 279,
                       child: Material(
                         color: Color.fromRGBO(0, 0, 0, 0),
                         child: TextField(
+                            controller: myController,
+                            onChanged: searchConversation,
                             cursorColor: Colors.black,
                             textAlignVertical: TextAlignVertical.center,
                             style: TextStyle(
@@ -313,39 +390,16 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
                 child: ScrollConfiguration(
                   behavior: ScrollConfiguration.of(context)
                       .copyWith(scrollbars: false),
-                  child: ListView(
+                  child: ListView.separated(
                     scrollDirection: Axis.horizontal,
-                    children: const <Widget>[
-                      // Person 1
-                      MatchPeople(
-                          imagePath: "assets/avatar/Male1.jpg",
-                          name: 'Minh Nguyen'),
-                      SizedBox(width: 16),
-                      // Person 2
-                      MatchPeople(
-                          imagePath: "assets/avatar/Female1.jpg",
-                          name: 'Nguyet Phan'),
-                      SizedBox(width: 16),
-                      // Person 3
-                      MatchPeople(
-                          imagePath: "assets/avatar/Male2.jpg",
-                          name: 'Minh Luan'),
-                      SizedBox(width: 16),
-                      // Person 4
-                      MatchPeople(
-                          imagePath: "assets/avatar/Female2.jpg",
-                          name: 'Thanh Tran'),
-                      SizedBox(width: 16),
-                      // Person 5
-                      MatchPeople(
-                          imagePath: "assets/avatar/Male3.jpg",
-                          name: 'Tuan Nguyen'),
-                      SizedBox(width: 16),
-                      // Person 6
-                      MatchPeople(
-                          imagePath: "assets/avatar/Female3.jpg",
-                          name: 'Hoai Thuong'),
-                    ],
+                    separatorBuilder: (BuildContext context, int index) {
+                      return const SizedBox(width: 16);
+                    },
+                    itemCount: allMatchPeople.length,
+                    itemBuilder: (context, index) {
+                      final match = allMatchPeople[index];
+                      return match;
+                    },
                   ),
                 ),
               )),
@@ -368,7 +422,7 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
                     height: 1),
               )),
 
-          // Chat list
+          // Conversation list
           Positioned(
             top: 359,
             left: 24,
@@ -382,61 +436,17 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
               child: ScrollConfiguration(
                 behavior:
                     ScrollConfiguration.of(context).copyWith(scrollbars: false),
-                child: ListView(
-                    scrollDirection: Axis.vertical,
-                    children: const <Widget>[
-                      Conversation(
-                        imagePath: "assets/avatar/Male1.jpg",
-                        name: 'Minh Nguyen',
-                        latestMesssage: 'You: Okay, maybe next time.',
-                        time: '30m',
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Conversation(
-                        imagePath: "assets/avatar/Male2.jpg",
-                        name: 'Minh Luan',
-                        latestMesssage: 'Nice to meet you',
-                        time: '10h',
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Conversation(
-                        imagePath: "assets/avatar/Female1.jpg",
-                        name: 'Nguyet Phan',
-                        latestMesssage: 'Hello',
-                        time: '11h',
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Conversation(
-                        imagePath: "assets/avatar/Male3.jpg",
-                        name: 'Tuan Nguyen',
-                        latestMesssage: 'You: I had fun today',
-                        time: '21d',
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Conversation(
-                        imagePath: "assets/avatar/Female3.jpg",
-                        name: 'Hoai Thuong',
-                        latestMesssage: 'You: I miss you so much',
-                        time: '100d',
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Conversation(
-                        imagePath: "assets/avatar/Female2.jpg",
-                        name: 'Thanh Tran',
-                        latestMesssage: 'How are you?',
-                        time: '131d',
-                      ),
-                    ]),
+                child: ListView.separated(
+                  scrollDirection: Axis.vertical,
+                  separatorBuilder: (BuildContext context, int index) {
+                    return const SizedBox(height: 5);
+                  },
+                  itemCount: conversations.length,
+                  itemBuilder: (context, index) {
+                    final conversation = conversations[index];
+                    return conversation;
+                  },
+                ),
               ),
             ),
           )

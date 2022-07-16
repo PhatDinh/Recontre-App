@@ -90,7 +90,7 @@ class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
     ChatBubble(
       isText: true,
       isSender: true,
-      textContent: 'Hi Trang',
+      textContent: 'Hi Minh',
     ),
     SizedBox(height: 18),
     ChatBubble(
@@ -123,17 +123,19 @@ class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
     newText = myController.text;
     myController.clear();
     setState(() {
-      bubbleList = List.from(bubbleList)
-        ..addAll([
-          SizedBox(
-            height: 18,
-          ),
-          ChatBubble(
-            isText: true,
-            isSender: true,
-            textContent: newText,
-          )
-        ]);
+      if (newText != "") {
+        bubbleList = List.from(bubbleList)
+          ..addAll([
+            SizedBox(
+              height: 18,
+            ),
+            ChatBubble(
+              isText: true,
+              isSender: true,
+              textContent: newText,
+            )
+          ]);
+      }
     });
   }
 
@@ -172,8 +174,6 @@ class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
                       children: bubbleList),
                 )),
           ),
-
-          //Positioned(top: 756, left: 0, child: null),
 
           // Info of conversation
           Positioned(
@@ -223,7 +223,7 @@ class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
                               imagePath: "assets/avatar/Male1.jpg", size: 24),
                           const SizedBox(width: 16),
                           const Text(
-                            'Minh Trang',
+                            'Minh Nguyen',
                             textAlign: TextAlign.left,
                             style: TextStyle(
                                 decoration: TextDecoration.none,
@@ -233,12 +233,12 @@ class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
                                 fontWeight: FontWeight.bold,
                                 height: 1),
                           ),
-                          const SizedBox(width: 25),
+                          const SizedBox(width: 15),
                           Image.asset(
                             "assets/icon-orange/Status=Active, Type=Report.png",
                             height: 48,
                           ),
-                          const SizedBox(width: 10),
+                          const SizedBox(width: 5),
                           Image.asset(
                             "assets/icon-orange/Status=Active, Type=Block.png",
                             height: 48,
