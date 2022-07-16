@@ -451,82 +451,115 @@ class _HomescreenWidgetState extends State<HomescreenWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: 390,
-        height: 844,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(16),
-            topRight: Radius.circular(16),
-            bottomLeft: Radius.circular(16),
-            bottomRight: Radius.circular(16),
-          ),
-          color: Color.fromRGBO(253, 246, 235, 1),
+      width: 390,
+      height: 844,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(16),
+          topRight: Radius.circular(16),
+          bottomLeft: Radius.circular(16),
+          bottomRight: Radius.circular(16),
         ),
-        child: Stack(children: <Widget>[
-          //Card
-          Positioned(
-            top: 30,
-            left: 24,
-            child: SizedBox(
-              height: 538,
-              width: 342,
-              child: SwipeCards(
-                  matchEngine: _matchEngine,
-                  onStackFinished: () {
-                    _scaffoldKey.currentState!.showSnackBar(SnackBar(
-                      content: Text("Stack Finished"),
-                      duration: Duration(milliseconds: 500),
-                    ));
-                  },
-                  itemChanged: (SwipeItem item, int index) {
-                    print("item: ${item.content.nameAge}, index: $index");
-                  },
-                  itemBuilder: (BuildContext context, int index) {
-                    return SwipeProfile(
-                        imagePath: _swipeItems[index].content.imagePath,
-                        nameAge: _swipeItems[index].content.nameAge,
-                        city: _swipeItems[index].content.city);
-                  }),
-            ),
+        color: Color.fromRGBO(253, 246, 235, 1),
+      ),
+      child: Stack(children: <Widget>[
+        Positioned(
+          top: 30,
+          left: 27,
+          child: Text(
+            'Swipe',
+            textAlign: TextAlign.left,
+            style: TextStyle(
+                color: Color.fromRGBO(0, 0, 0, 1),
+                fontFamily: 'Roboto',
+                fontSize: 34,
+                letterSpacing:
+                    0 /*percentages not used in flutter. defaulting to zero*/,
+                fontWeight: FontWeight.bold,
+                height: 1),
           ),
+        ),
+        Positioned(
+          top: 400,
+          left: 40,
+          child: Text(
+            'You have reached the end of \nthe list of nominations, take a break\n and text with those who previously matched',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Color.fromARGB(255, 121, 121, 121),
+                fontFamily: 'Roboto',
+                fontSize: 16,
+                letterSpacing:
+                    0 /*percentages not used in flutter. defaulting to zero*/,
+                fontWeight: FontWeight.normal,
+                height: 1),
+          ),
+        ),
+        //Card
+        Positioned(
+          top: 80,
+          left: 24,
+          child: SizedBox(
+            height: 538,
+            width: 342,
+            child: SwipeCards(
+                matchEngine: _matchEngine,
+                onStackFinished: () {
+                  _scaffoldKey.currentState!.showSnackBar(SnackBar(
+                    content: Text("Stack Finished"),
+                    duration: Duration(milliseconds: 500),
+                  ));
+                },
+                itemChanged: (SwipeItem item, int index) {
+                  print("item: ${item.content.nameAge}, index: $index");
+                },
+                itemBuilder: (BuildContext context, int index) {
+                  return SwipeProfile(
+                      imagePath: _swipeItems[index].content.imagePath,
+                      nameAge: _swipeItems[index].content.nameAge,
+                      city: _swipeItems[index].content.city);
+                }),
+          ),
+        ),
 
-          //button
-          Positioned(
-              top: 600,
-              left: 50,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(0, 255, 255, 255),
-                ),
-                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Image.asset("assets/icon/Icon_Rewind.png", height: 50),
-                    SizedBox(width: 16),
-                    InkWell(
-                      onTap: () {
-                        _matchEngine.currentItem!.nope();
-                      },
-                      child: Image.asset(
-                        "assets/icon-orange/Icon_Dislike.png",
-                        height: 70,
-                      ),
+        //button
+        Positioned(
+            top: 650,
+            left: 50,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Color.fromARGB(0, 255, 255, 255),
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Image.asset("assets/icon/Icon_Rewind.png", height: 50),
+                  SizedBox(width: 16),
+                  InkWell(
+                    onTap: () {
+                      _matchEngine.currentItem!.nope();
+                    },
+                    child: Image.asset(
+                      "assets/icon-orange/Icon_Dislike.png",
+                      height: 70,
                     ),
-                    SizedBox(width: 16),
-                    InkWell(
-                      onTap: () {
-                        _matchEngine.currentItem!.like();
-                      },
-                      child: Image.asset("assets/icon-orange/Icon_Like.png",
-                          height: 70),
-                    ),
-                    SizedBox(width: 16),
-                    Image.asset("assets/icon/Icon_Mark.png", height: 50)
-                  ],
-                ),
-              )),
-        ]));
+                  ),
+                  SizedBox(width: 16),
+                  InkWell(
+                    onTap: () {
+                      _matchEngine.currentItem!.like();
+                    },
+                    child: Image.asset("assets/icon-orange/Icon_Like.png",
+                        height: 70),
+                  ),
+                  SizedBox(width: 16),
+                  Image.asset("assets/icon/Icon_Mark.png", height: 50)
+                ],
+              ),
+            )),
+      ]),
+    );
   }
 }
 
