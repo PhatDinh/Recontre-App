@@ -155,9 +155,22 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
           color: Color.fromRGBO(253, 246, 235, 1),
         ),
         child: Stack(children: <Widget>[
+          const Positioned(
+              top: 30,
+              left: 24,
+              child: Text('Message',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    decoration: TextDecoration.none,
+                    color: Color.fromRGBO(0, 0, 0, 1),
+                    fontFamily: 'Roboto',
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                  ))),
+
           // Search box
           Positioned(
-              top: 24,
+              top: 80,
               left: 24,
               child: Container(
                 height: 40,
@@ -223,7 +236,7 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
 
           // 'My matches' text
           const Positioned(
-              top: 90,
+              top: 146,
               left: 24,
               child: Text(
                 'My matches',
@@ -241,7 +254,7 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
 
           // Orange circle
           Positioned(
-              top: 87,
+              top: 143,
               left: 132,
               child: Container(
                   width: 24,
@@ -288,7 +301,7 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
 
           // Matched people's avatars
           Positioned(
-              top: 126,
+              top: 182,
               left: 24,
               child: Container(
                 width: 345,
@@ -339,7 +352,7 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
 
           // 'Conversation' text
           const Positioned(
-              top: 277,
+              top: 333,
               left: 24,
               child: Text(
                 'Conversations',
@@ -357,7 +370,7 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
 
           // Chat list
           Positioned(
-            top: 303,
+            top: 359,
             left: 24,
             child: Container(
               width: 345,
