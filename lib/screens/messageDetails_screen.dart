@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:recontre/screens/messageList_screen.dart';
 
@@ -139,6 +140,103 @@ class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
     });
   }
 
+  void showBottomSheet() {
+    showModalBottomSheet(
+        context: context,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        isScrollControlled: true,
+        builder: (BuildContext context) {
+          return SingleChildScrollView(
+              child: Container(
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Safety Tool",
+                    style: TextStyle(
+                        fontSize: 35,
+                        fontFamily: "Roboto",
+                        fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Icons.report,
+                        size: 30,
+                        color: Colors.red,
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text('REPORT THIS USER',
+                          style: TextStyle(
+                              fontFamily: "Roboto",
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold))
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        CupertinoIcons.xmark_circle,
+                        color: Colors.blue,
+                        size: 30,
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text(
+                        "UNMATCH THIS USER",
+                        style: TextStyle(
+                            fontFamily: "Roboto",
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ));
+        });
+  }
+
+  void showModal() {
+    showModalBottomSheet(
+        context: context,
+        builder: (builder) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Safety Tool",
+                style: TextStyle(fontSize: 40),
+              ),
+              Row(
+                children: [Icon(Icons.report), Text('Report this user')],
+              ),
+              Row(
+                children: [
+                  Icon(CupertinoIcons.xmark_circle),
+                  Text("Unmatch this user")
+                ],
+              )
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -233,15 +331,13 @@ class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
                                 fontWeight: FontWeight.bold,
                                 height: 1),
                           ),
-                          const SizedBox(width: 15),
-                          Image.asset(
-                            "assets/icon-orange/Status=Active, Type=Report.png",
-                            height: 48,
-                          ),
-                          const SizedBox(width: 5),
-                          Image.asset(
-                            "assets/icon-orange/Status=Active, Type=Block.png",
-                            height: 48,
+                          const SizedBox(width: 30),
+                          GestureDetector(
+                            onTap: () => showBottomSheet(),
+                            child: Image.asset(
+                              "assets/icon-orange/Status=Active, Type=Report.png",
+                              height: 48,
+                            ),
                           ),
                         ],
                       ),

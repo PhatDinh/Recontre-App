@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recontre/screens/like_screen.dart';
 import 'package:recontre/screens/messageDetails_screen.dart';
 import 'package:recontre/screens/messageList_screen.dart';
 import 'package:recontre/screens/profile/profile_screen.dart';
@@ -25,8 +26,9 @@ class _RootScreenState extends State<RootScreen> {
       index: index,
       children: [
         ProfileScreen(),
-        ProfileScreen(),
+        LikeScreen(),
         HomescreenWidget(),
+        MessagelistWidget(),
         MessagelistWidget(),
       ],
     );
@@ -66,7 +68,7 @@ class _RootScreenState extends State<RootScreen> {
             ),
           ),
         ),
-        title: Text("Notifications"),
+        title: Text("Like"),
       );
     } else if (index == 2) {
       return AppBar(
@@ -147,7 +149,7 @@ class _RootScreenState extends State<RootScreen> {
                     height: 50,
                   )),
               BottomNavigationBarItem(
-                  label: "Notification",
+                  label: "Like",
                   activeIcon: Image.asset(
                     "assets/icon-orange/Icon_Notifications.png",
                     height: 50,
