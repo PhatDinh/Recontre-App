@@ -39,7 +39,7 @@ class SwipeProfile extends StatelessWidget {
         children: <Widget>[
           Container(
               width: 310,
-              height: 370,
+              height: 400,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(4),
@@ -52,7 +52,7 @@ class SwipeProfile extends StatelessWidget {
               ),
               child: Stack(children: <Widget>[
                 Positioned(
-                    top: 350,
+                    top: 380,
                     left: 135,
                     child: Container(
                       decoration: BoxDecoration(),
@@ -144,12 +144,6 @@ class SwipeProfile extends StatelessWidget {
                         ],
                       ),
                     )),
-                Positioned(
-                    top: 0,
-                    left: 262,
-                    child: Image.asset(
-                        "assets/icon-orange/Status=Active, Type=Information.png",
-                        height: 48)),
               ])),
           SizedBox(height: 12),
           Container(
@@ -465,12 +459,12 @@ class _HomescreenWidgetState extends State<HomescreenWidget> {
       child: Stack(children: <Widget>[
         Positioned(
           top: 30,
-          left: 27,
+          left: 145,
           child: Text(
             'Swipe',
-            textAlign: TextAlign.left,
+            textAlign: TextAlign.center,
             style: TextStyle(
-                color: Color.fromRGBO(0, 0, 0, 1),
+                color: Color.fromARGB(255, 192, 107, 10),
                 fontFamily: 'Roboto',
                 fontSize: 34,
                 letterSpacing:
@@ -479,6 +473,20 @@ class _HomescreenWidgetState extends State<HomescreenWidget> {
                 height: 1),
           ),
         ),
+        /*Positioned(
+            top: 30,
+            left: 240,
+            child: Image.asset("assets/icon/Icon_Mark.png", height: 35)),
+        Positioned(
+            top: 30,
+            left: 25,
+            child: Image.asset("assets/icon/Icon_Rewind.png", height: 35)),*/
+        Positioned(
+            top: 30,
+            left: 330,
+            child: Image.asset(
+                "assets/icon-orange/Status=Active, Type=Filter.png",
+                height: 35)),
         Positioned(
           top: 400,
           left: 40,
@@ -497,10 +505,10 @@ class _HomescreenWidgetState extends State<HomescreenWidget> {
         ),
         //Card
         Positioned(
-          top: 80,
+          top: 85,
           left: 24,
           child: SizedBox(
-            height: 538,
+            height: 570,
             width: 342,
             child: SwipeCards(
                 matchEngine: _matchEngine,
@@ -524,37 +532,64 @@ class _HomescreenWidgetState extends State<HomescreenWidget> {
 
         //button
         Positioned(
-            top: 650,
-            left: 50,
+            top: 675,
+            left: 90,
             child: Container(
-              decoration: BoxDecoration(
-                color: Color.fromARGB(0, 255, 255, 255),
-              ),
               padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Image.asset("assets/icon/Icon_Rewind.png", height: 50),
-                  SizedBox(width: 16),
                   InkWell(
                     onTap: () {
                       _matchEngine.currentItem!.nope();
                     },
-                    child: Image.asset(
-                      "assets/icon-orange/Icon_Dislike.png",
-                      height: 70,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(40),
+                          topRight: Radius.circular(40),
+                          bottomLeft: Radius.circular(40),
+                          bottomRight: Radius.circular(40),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Color.fromARGB(37, 48, 41, 41),
+                              offset: Offset(0, 4),
+                              blurRadius: 24)
+                        ],
+                      ),
+                      child: Image.asset(
+                        "assets/icon-orange/Icon_Dislike.png",
+                        height: 75,
+                      ),
                     ),
                   ),
-                  SizedBox(width: 16),
+                  SizedBox(width: 70),
                   InkWell(
                     onTap: () {
                       _matchEngine.currentItem!.like();
                     },
-                    child: Image.asset("assets/icon-orange/Icon_Like.png",
-                        height: 70),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(40),
+                          topRight: Radius.circular(40),
+                          bottomLeft: Radius.circular(40),
+                          bottomRight: Radius.circular(40),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Color.fromARGB(37, 48, 41, 41),
+                              offset: Offset(0, 4),
+                              blurRadius: 24)
+                        ],
+                      ),
+                      child: Image.asset(
+                        "assets/icon-orange/Icon_Like.png",
+                        height: 75,
+                      ),
+                    ),
                   ),
-                  SizedBox(width: 16),
-                  Image.asset("assets/icon/Icon_Mark.png", height: 50)
                 ],
               ),
             )),
