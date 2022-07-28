@@ -6,7 +6,8 @@ import 'package:recontre/screens/profile/profile_screen.dart';
 import 'package:recontre/screens/swipe_screen.dart';
 
 class RootScreen extends StatefulWidget {
-  RootScreen({Key? key}) : super(key: key);
+  final bool testBlock;
+  RootScreen({Key? key, this.testBlock = false}) : super(key: key);
 
   @override
   State<RootScreen> createState() => _RootScreenState();
@@ -26,9 +27,11 @@ class _RootScreenState extends State<RootScreen> {
       index: index,
       children: [
         ProfileScreen(),
-        LikeScreen(),
+        LikeScreen(
+          block: widget.testBlock,
+        ),
         HomescreenWidget(),
-        MessagelistWidget(),
+        MessagelistWidget(testBlock: widget.testBlock),
         MessagelistWidget(),
       ],
     );

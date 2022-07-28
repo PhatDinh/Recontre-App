@@ -180,6 +180,8 @@ List<Conversation> allConversation = [
 ];
 
 class MessagelistWidget extends StatefulWidget {
+  final bool testBlock;
+  MessagelistWidget({Key? key, this.testBlock = false}) : super(key: key);
   @override
   _MessagelistWidgetState createState() => _MessagelistWidgetState();
 }
@@ -201,6 +203,17 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
     MatchPeople(imagePath: "assets/avatar/Female3.jpg", name: 'Hoai Thuong'),
   ];
   final myController = TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    if (widget.testBlock == true) {
+      allMatchPeople.removeAt(0);
+      allConversation.removeAt(0);
+      setState(() {});
+    }
+  }
 
   @override
   void dispose() {

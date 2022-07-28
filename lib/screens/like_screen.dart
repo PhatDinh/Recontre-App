@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:recontre/screens/messageDetails_screen.dart';
 
 class LikeScreen extends StatelessWidget {
-  const LikeScreen({Key? key}) : super(key: key);
+  final bool block;
+  const LikeScreen({this.block = false, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -10,14 +11,15 @@ class LikeScreen extends StatelessWidget {
       crossAxisCount: 2,
       childAspectRatio: 4 / 6,
       children: [
-        ProfileCard(
-          function: () {
-            Navigator.push(context, MaterialPageRoute(builder: (builder) {
-              return MessagedetailsWidget();
-            }));
-          },
-          url: "assets/avatar/Male1.jpg",
-        ),
+        if (block == false)
+          ProfileCard(
+            function: () {
+              Navigator.push(context, MaterialPageRoute(builder: (builder) {
+                return MessagedetailsWidget();
+              }));
+            },
+            url: "assets/avatar/Male1.jpg",
+          ),
         ProfileCard(
           url: "assets/avatar/Female1.jpg",
         ),

@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:recontre/screens/like_screen.dart';
 import 'package:recontre/screens/messageList_screen.dart';
 
 import 'package:flutter/scheduler.dart';
+import 'package:recontre/screens/root_screen.dart';
 
 class ChatBubble extends StatelessWidget {
   final bool isText; //true = text; false = image;
@@ -151,7 +153,7 @@ class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom),
             child: Padding(
-              padding: const EdgeInsets.all(15),
+              padding: const EdgeInsets.all(12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -202,6 +204,36 @@ class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
                             fontFamily: "Roboto",
                             fontSize: 15,
                             fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.block,
+                        color: Colors.blue,
+                        size: 30,
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      GestureDetector(
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (builder) => RootScreen(
+                                      testBlock: true,
+                                    ))),
+                        child: Text(
+                          "BLOCK THIS USER",
+                          style: TextStyle(
+                              fontFamily: "Roboto",
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
+                        ),
                       )
                     ],
                   )
