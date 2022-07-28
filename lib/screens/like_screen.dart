@@ -7,36 +7,54 @@ class LikeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 2,
-      childAspectRatio: 4 / 6,
-      children: [
-        if (block == false)
-          ProfileCard(
-            function: () {
-              Navigator.push(context, MaterialPageRoute(builder: (builder) {
-                return MessagedetailsWidget();
-              }));
-            },
-            url: "assets/avatar/Male1.jpg",
+    return Column(children: [
+      Padding(
+        padding: const EdgeInsets.only(top: 25, left: 30),
+        child: Align(
+          alignment: Alignment.topLeft,
+          child: Text(
+            "Like",
+            style: TextStyle(
+                fontSize: 34,
+                fontFamily: "Roboto",
+                color: Colors.black,
+                fontWeight: FontWeight.bold),
           ),
-        ProfileCard(
-          url: "assets/avatar/Female1.jpg",
         ),
-        ProfileCard(
-          url: "assets/avatar/Female2.jpg",
+      ),
+      Expanded(
+        child: GridView.count(
+          crossAxisCount: 2,
+          childAspectRatio: 4 / 6,
+          children: [
+            if (block == false)
+              ProfileCard(
+                function: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (builder) {
+                    return MessagedetailsWidget();
+                  }));
+                },
+                url: "assets/avatar/Male1.jpg",
+              ),
+            ProfileCard(
+              url: "assets/avatar/Female1.jpg",
+            ),
+            ProfileCard(
+              url: "assets/avatar/Female2.jpg",
+            ),
+            ProfileCard(
+              url: "assets/avatar/Female3.jpg",
+            ),
+            ProfileCard(
+              url: "assets/avatar/Male4.jpg",
+            ),
+            ProfileCard(
+              url: "assets/avatar/Male3.jpg",
+            ),
+          ],
         ),
-        ProfileCard(
-          url: "assets/avatar/Female3.jpg",
-        ),
-        ProfileCard(
-          url: "assets/avatar/Male4.jpg",
-        ),
-        ProfileCard(
-          url: "assets/avatar/Male3.jpg",
-        ),
-      ],
-    );
+      ),
+    ]);
   }
 }
 
