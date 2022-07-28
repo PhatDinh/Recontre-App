@@ -331,7 +331,7 @@ class _MessagedetailsWidgetState extends State<MessagedetailsWidget> {
                                 fontWeight: FontWeight.bold,
                                 height: 1),
                           ),
-                          const SizedBox(width: 30),
+                          const SizedBox(width: 50),
                           GestureDetector(
                             onTap: () => showBottomSheet(),
                             child: Image.asset(
