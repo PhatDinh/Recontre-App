@@ -476,11 +476,11 @@ class _HomescreenWidgetState extends State<HomescreenWidget> {
         /*Positioned(
             top: 30,
             left: 240,
-            child: Image.asset("assets/icon/Icon_Mark.png", height: 35)),
+            child: Image.asset("assets/icon/Icon_Mark.png", height: 35)),*/
         Positioned(
             top: 30,
             left: 25,
-            child: Image.asset("assets/icon/Icon_Rewind.png", height: 35)),*/
+            child: Image.asset("assets/icon/Icon_Rewind.png", height: 35)),
         Positioned(
             top: 30,
             left: 330,
