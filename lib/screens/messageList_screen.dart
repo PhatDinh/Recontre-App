@@ -244,15 +244,15 @@ class _MessagelistWidgetState extends State<MessagelistWidget> {
         ),
         child: Stack(children: <Widget>[
           const Positioned(
-              top: 30,
-              left: 24,
+              top: 25,
+              left: 28,
               child: Text('Message',
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     decoration: TextDecoration.none,
                     color: Color.fromRGBO(0, 0, 0, 1),
                     fontFamily: 'Roboto',
-                    fontSize: 32,
+                    fontSize: 34,
                     fontWeight: FontWeight.bold,
                   ))),
 

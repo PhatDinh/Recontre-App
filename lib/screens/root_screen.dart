@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:recontre/screens/like_screen.dart';
 import 'package:recontre/screens/messageDetails_screen.dart';
@@ -153,13 +154,15 @@ class _RootScreenState extends State<RootScreen> {
                   )),
               BottomNavigationBarItem(
                   label: "Like",
-                  activeIcon: Image.asset(
-                    "assets/icon-orange/Icon_Notifications.png",
-                    height: 50,
+                  activeIcon: Icon(
+                    CupertinoIcons.heart_circle_fill,
+                    color: Colors.orange,
+                    size: 50,
                   ),
-                  icon: Image.asset(
-                    "assets/icon/Icon_Notifications.png",
-                    height: 50,
+                  icon: Icon(
+                    CupertinoIcons.heart_circle_fill,
+                    size: 50,
+                    color: Color.fromRGBO(151, 140, 140, 0.3),
                   )),
               BottomNavigationBarItem(
                   label: "Swipe",
