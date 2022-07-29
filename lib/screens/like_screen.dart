@@ -9,7 +9,7 @@ class LikeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: [
       Padding(
-        padding: const EdgeInsets.only(top: 25, left: 30),
+        padding: const EdgeInsets.only(top: 25, left: 30, bottom: 10),
         child: Align(
           alignment: Alignment.topLeft,
           child: Text(
@@ -85,14 +85,17 @@ class ProfileCard extends StatelessWidget {
               ),
             ),
             Positioned(
-              bottom: 1,
+              bottom: -1,
               right: 0,
               left: 0,
-              child: InkWell(
-                onTap: function,
-                child: Image.asset(
-                  "assets/icon-orange/Icon_Like.png",
-                  height: 50,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: InkWell(
+                  onTap: function,
+                  child: Image.asset(
+                    "assets/icon-orange/Icon_Like.png",
+                    height: 50,
+                  ),
                 ),
               ),
             )

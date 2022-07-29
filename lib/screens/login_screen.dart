@@ -65,14 +65,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     margin: const EdgeInsets.fromLTRB(0, 48, 0, 4),
                     padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                     child: ElevatedButton(
-                      child: const Text('Login',
+                      child: const Text(
+                        'Login',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
-                        ),),
+                        ),
+                      ),
                       onPressed: () {
-                        print(nameController.text);
-                        print(passwordController.text);
                         Navigator.push(context,
                             MaterialPageRoute(builder: (builder) {
                           return RootScreen();
@@ -100,25 +100,28 @@ class _LoginScreenState extends State<LoginScreen> {
                       '- or login with-',
                       style: TextStyle(
                         fontSize: 14,
-                        color:Colors.grey,
+                        color: Colors.grey,
                       ),
                     )),
                 Row(
                   children: <Widget>[
                     IconButton(
-                      icon: Image.asset('assets/icon-socialMedia/ImgBtn-Facebook.png'),
+                      icon: Image.asset(
+                          'assets/icon-socialMedia/ImgBtn-Facebook.png'),
                       iconSize: 54,
                       onPressed: () {},
                     ),
                     const SizedBox(width: 8),
                     IconButton(
-                      icon: Image.asset('assets/icon-socialMedia/ImgBtn-Instagram.png'),
+                      icon: Image.asset(
+                          'assets/icon-socialMedia/ImgBtn-Instagram.png'),
                       iconSize: 54,
                       onPressed: () {},
                     ),
                     const SizedBox(width: 8),
                     IconButton(
-                      icon: Image.asset('assets/icon-socialMedia/ImgBtn-Twitter.png'),
+                      icon: Image.asset(
+                          'assets/icon-socialMedia/ImgBtn-Twitter.png'),
                       iconSize: 54,
                       onPressed: () {},
                     ),
@@ -128,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   children: <Widget>[
                     const Text('Don\'t have an account?',
-                    style: TextStyle(color:Colors.grey)),
+                        style: TextStyle(color: Colors.grey)),
                     TextButton(
                       child: const Text(
                         'Sign up',
