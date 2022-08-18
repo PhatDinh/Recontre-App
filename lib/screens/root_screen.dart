@@ -154,15 +154,13 @@ class _RootScreenState extends State<RootScreen> {
                   )),
               BottomNavigationBarItem(
                   label: "Like",
-                  activeIcon: Icon(
-                    CupertinoIcons.heart_circle_fill,
-                    color: Colors.orange,
-                    size: 50,
+                  activeIcon: Image.asset(
+                    "assets/icon-orange/Status=Love, Type=Information-1.png",
+                    height: 50,
                   ),
-                  icon: Icon(
-                    CupertinoIcons.heart_circle_fill,
-                    size: 50,
-                    color: Color.fromRGBO(151, 140, 140, 0.3),
+                  icon: Image.asset(
+                    "assets/icon/Status=Love, Type=Information.png",
+                    height: 50,
                   )),
               BottomNavigationBarItem(
                   label: "Swipe",

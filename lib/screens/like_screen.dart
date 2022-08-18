@@ -85,15 +85,14 @@ class ProfileCard extends StatelessWidget {
               ),
             ),
             Positioned(
-              bottom: -1,
-              right: 0,
-              left: 0,
+              top: 3,
+              left: 3,
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
+                padding: const EdgeInsets.only(bottom: 8.0, right: 15.0),
                 child: InkWell(
                   onTap: function,
                   child: Image.asset(
-                    "assets/icon-orange/Icon_Like.png",
+                    "assets/icon-orange/Status=Love, Type=Information-1.png",
                     height: 50,
                   ),
                 ),
